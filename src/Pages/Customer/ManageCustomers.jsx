@@ -177,7 +177,7 @@ const ManageCustomers = () => {
                         <Form>
                           <div className="row">
                             <div className="col-md-6 col-lg-4">
-                              <TextFields label="Customer ID" name="ucustomer_id" type="text" readOnly={true} />
+                              <TextFields label="Customer ID" name="ucustomer_id" type="text" className="form-control pos__form--input input__readonly" readOnly={true} />
                               <TextFields label="Customer Name" name="uname" type="text" />
                               <TextFields label="Customer Mobile" name="umobile" type="text" />
                             </div>

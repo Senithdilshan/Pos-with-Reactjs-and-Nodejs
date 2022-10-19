@@ -36,4 +36,10 @@
 .table-striped tbody tr td.icon__td {
     padding: 0;
 }
-
+.form-control.input__readonly,
+.form-control.input__readonly:hover,
+.form-control.input__readonly:focus {
+    background: #2c2c2c;
+    color: #fff6f7;
+    cursor: not-allowed;
+}
