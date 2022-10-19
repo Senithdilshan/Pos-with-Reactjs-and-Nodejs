@@ -5,6 +5,8 @@ import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 import * as TbIcons from "react-icons/tb";
 import * as FaIcons from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+
 export const NavbarData=[
     {
         title:'Home',
@@ -16,6 +18,12 @@ export const NavbarData=[
         title:'Login',
         path:'/login',
         icon:<IoIcons.IoMdLogIn/>,
+        cName:'nav-text'
+    },
+    {
+        title:'Customers',
+        path:'/manage-customers',
+        icon:<FaUsers/>,
         cName:'nav-text'
     },
     {

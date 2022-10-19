@@ -1,0 +1,39 @@
+.data__table {
+    font-size: 12px;
+    max-height: 37vh;
+    overflow-y: auto;
+}
+
+.pos__form label {
+    font-size: 12px;
+}
+
+.data__form--wrapper {
+    position: absolute;
+    bottom: 10px;
+    background-color: #fff;
+}
+.data__button--wrapper {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.action__button {
+    width: 20px;
+    border: none;
+    font-size: 14px;
+    background: transparent;
+}
+.action__button--red {
+    color: #dc3545;
+}
+.action__button--green {
+    color: #3d8b27;
+}
+.table-striped tbody tr td {
+    padding: 4px 8px;
+}
+.table-striped tbody tr td.icon__td {
+    padding: 0;
+}
+

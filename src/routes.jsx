@@ -7,6 +7,7 @@ import AddnewBatch from "./Pages/Stock/AddBatches/AddnewBatch"
 import AddUser from "./Pages/User/AddUser/AddUser"
 import AddSupplier from "./Pages/Supplier/AddSupplier/AddSupplier"
 import AddToStock from "./Pages/Stock/StockTable/AddToStock"
+import ManageCustomers from "./Pages/Customer/ManageCustomers"
 // import AddBill from "./Pages/Sales/AddBill/AddBill"
 
 export const routes = [
@@ -46,6 +47,10 @@ export const routes = [
     {
         path:'addtostock',
         Component:<AddToStock/>
+    },
+    {
+        path:'/manage-customers',
+        Component: <ManageCustomers/>
     }
     // {
     //     path: '/addbill',
