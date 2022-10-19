@@ -6,10 +6,10 @@ import * as Yup from 'yup';
 import Navbar from '../../Components/Navbar';
 import TextFields from '../../Components/Elements/InputField';
 import SearchBar from '../../Components/Elements/SearchBar';
-import { FaEdit, FaTrashAlt, FaUserPlus, FaHighlighter } from "react-icons/fa";
+import { FaEdit, FaTrashAlt, FaUserPlus, FaHighlighter, FaClipboardCheck, FaChevronCircleLeft } from "react-icons/fa";
 //import { addCustomer } from "./addCustomer";
 import { addCustomer } from "./Actions/addCustomer";
-
+import { updateCustomer } from "./Actions/updateCustomer";
 import { editCustomer } from "./Actions/editCustomer";
 import './ManageCustomers.css';
 import { serverUrl } from "../../Config";
@@ -26,12 +26,13 @@ const ManageCustomers = () => {
         console.log(err)
       })
   }
+
   useEffect(() => {
     fetch()
   }, [])
 
   const validate = Yup.object({
-    customer_id: Yup.string().required(),
+    customer_id: Yup.string(),
     name: Yup.string().required(),
     mobile: Yup.number().required(),
     loyalty_points: Yup.number().nullable(),
@@ -119,8 +120,8 @@ const ManageCustomers = () => {
                                       axios.put( `${serverUrl}/manage-customers/deactiveCustomer/`+cid)  
                                         .then(() => {
                                           //formik.resetForm()
-                                          fetch()
                                           window.alert('Custpmer deactivate Sucessfully!');
+                                          fetch()
                                           //formik.resetForm()
                                         })
                                         .catch((err) => {
@@ -139,11 +140,13 @@ const ManageCustomers = () => {
                     </div>
 
                     <div className="row container data__form--wrapper">
-                      <div className="col-md-12 col-lg-12 data__form px-0">
+                      <div id="cust-show" className="col-md-12 col-lg-12 data__form px-0">
                         <Form>
                           <div className="row">
                             <div className="col-md-6 col-lg-4">
-                              <TextFields label="Customer ID" name="customer_id" type="text" />
+                              <div className="d-none">
+                                <TextFields label="Customer ID" name="customer_id" type="text" readOnly={true}/>
+                              </div>
                               <TextFields label="Customer Name" name="name" type="text" />
                               <TextFields label="Customer Mobile" name="mobile" type="text" />
                             </div>
@@ -152,12 +155,12 @@ const ManageCustomers = () => {
                               <TextFields label="Loyalty Points" name="loyalty_points" type="text" />
                             </div>
                             <div className="col-md-6 col-lg-4 d-flex data__button--wrapper">
-                              <button className="btn__standard" onClick={() => {
+                              <button className="btn__standard" type="button" onClick={() => {   
                                 addCustomer(formik.values)
                                   .then(() => {
-                                    formik.resetForm()
-                                    fetch()
+                                    //formik.resetForm()                                    
                                     window.alert('Customer was added sucessfully!');
+                                    fetch()
                                   })
                                   .catch((err) => {
                                     window.alert('Could not add the customer!');
@@ -169,6 +172,41 @@ const ManageCustomers = () => {
                           </div>
                         </Form>
                       </div>
+
+                      <div id="cust-edit" className="col-md-12 col-lg-12 data__form px-0 d-none">
+                        <Form>
+                          <div className="row">
+                            <div className="col-md-6 col-lg-4">
+                              <TextFields label="Customer ID" name="ucustomer_id" type="text" readOnly={true} />
+                              <TextFields label="Customer Name" name="uname" type="text" />
+                              <TextFields label="Customer Mobile" name="umobile" type="text" />
+                            </div>
+                            <div className="col-md-6 col-lg-4">
+                              <TextFields label="Customer Email" name="uemail" type="text" />
+                              <TextFields label="Loyalty Points" name="uloyalty_points" type="text" />
+                            </div>
+                            <div className="col-md-6 col-lg-4 d-flex data__button--wrapper">
+                              <button className="btn__standard" type="button" onClick={() => {
+                                updateCustomer()
+                                  .then(() => {
+                                    //formik.resetForm()
+                                    window.alert('Customer details updated sucessfully!');
+                                    fetch()
+                                  })
+                                  .catch((err) => {
+                                    window.alert('Customer details update failed!');
+                                  })
+                              }}><FaClipboardCheck /> Submit Update</button>
+                              <button className="btn__standard" type='reset' onClick={() => {
+                                document.getElementById('cust-show').classList.remove('d-none');
+                                document.getElementById('cust-edit').classList.add('d-none');
+                              }}><FaChevronCircleLeft />Cancel Update</button>
+                              {/* {notification} */}
+                            </div>
+                          </div>
+                        </Form>
+                      </div>
+
                     </div>
 
                   </div>
