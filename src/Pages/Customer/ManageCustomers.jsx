@@ -200,7 +200,7 @@ const ManageCustomers = () => {
                               <button className="btn__standard" type='reset' onClick={() => {
                                 document.getElementById('cust-show').classList.remove('d-none');
                                 document.getElementById('cust-edit').classList.add('d-none');
-                              }}><FaChevronCircleLeft />Cancel Update</button>
+                              }}><FaChevronCircleLeft />Exit Update</button>
                               {/* {notification} */}
                             </div>
                           </div>
