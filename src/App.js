@@ -3,7 +3,7 @@ import './App.css';
 import { Routes,Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { routes } from "./routes";
-
+import ReactToPrint from 'react-to-print';
 function App() {
   return (
     <div>
