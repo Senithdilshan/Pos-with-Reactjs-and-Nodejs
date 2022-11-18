@@ -9,10 +9,11 @@ import { Select, TextInput } from "@mantine/core";
 import { addStock } from './Addtostock.helper';
 import { useEffect } from "react";
 import axios from "axios";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
 export default function AddToStock() {
-
+  const navigate = useNavigate() 
   //-----------------------------------------------fetch batch No----------------------------------
   const [batches, setBatches] = useState([]);
   const fetchBatch = (pId) => {
@@ -191,6 +192,7 @@ export default function AddToStock() {
                               formik.resetForm()
                               fetch()
                               window.alert('Product Added Sucessfully')
+                              navigate('/grn')
                             })
                             .catch((err) => {
                               window.alert('Product Added Unsucessfull')
@@ -198,6 +200,9 @@ export default function AddToStock() {
                         }}
                       >Add to Stock</button>
                       <button className="reset" type='reset'>Reset</button>
+                      <Link to={'/stock'}>
+                        <button className="back">Back</button>
+                      </Link>
                     </Form>
                   </div>
                 )

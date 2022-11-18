@@ -1,15 +1,32 @@
-import React, { useEffect, useState , useRef} from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../../Components/Navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ReactToPrint from 'react-to-print';
+// import ReactToPrint from 'react-to-print';
+import * as AiIcons from "react-icons/ai";
 
 
 
 export default function ViewStock() {
-  const ref=useRef()
+  const navigate = useNavigate()
   const [batch, setBatches] = useState([]);
+  const [remove, setdelete] = useState([]);
+
+  const deletestock = (bNo) => {
+    axios
+      .delete("http://localhost:5000/stock/" + bNo)
+      .then((res) => {
+
+        setdelete(res.data)
+
+      })
+      .catch((err) => console.log(err))
+  }
+
+
+
+
   const fetch = () => {
     axios
       .get('http://localhost:5000/stock')
@@ -49,13 +66,22 @@ export default function ViewStock() {
               <button className="btn btn-secondary">Add Products to Stock</button>
             </Link>
           </div>
-        </div>
-        <div ref={ref} className="row">
-          <div className="col md-7" style={{
-            height: 300,
-            overflowY: 'scroll',
-            marginTop: 105
-          }}>
+          <div className="col">
+            <Link to={'/viewgrns'}>
+              <button className="btn btn-success">View GRNs</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/outofstock'}>
+              <button className="btn btn-danger">Out of stock</button>
+            </Link>
+          </div>
+          <div className="row">
+            <div className="col md-7" style={{
+              height: 300,
+              overflowY: 'scroll',
+              marginTop: 105
+            }}>
               <table className="table table-striped table-dark">
                 <thead className="thead-light">
                   <tr>
@@ -65,6 +91,8 @@ export default function ViewStock() {
                     <th scope="col">Quantity</th>
                     <th scope="col">Buying Price (Rs.)</th>
                     <th scope="col">Selling Price (Rs.)</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,23 +105,31 @@ export default function ViewStock() {
                         <td>{getb.quantity}</td>
                         <td>{getb.buyingPrice}</td>
                         <td>{getb.sellingPrice}</td>
+                        <td>
+                          <Link to={'/stock'}>
+                            <button className="btn btn-primary"><AiIcons.AiTwotoneEdit /></button>
+                          </Link>
+                        </td>
+                        <td>
+                          <Link to={'/stock'}>
+                            <button className="btn btn-danger"
+                              onClick={() => {
+                                deletestock(getb.batchNo)
+                                // window.confirm('Are you sure to delete this stock')
+                                window.alert('stock Deleted Sucessfully')
+                                fetch()
+                              }}
+                            ><AiIcons.AiFillDelete /></button>
+                          </Link>
+                        </td>
                       </tr>
                     ))
                   }
 
                 </tbody>
               </table>
+            </div>
           </div>
-        </div>
-        <div className="row">
-         <div className="col">
-         <ReactToPrint
-          trigger={()=><button className='btn btn-primary mx-auto'>Print</button>}
-          content={()=>ref.current}
-          documentTitle='New document'
-          pageStyle="print"
-          />
-         </div>
         </div>
       </div>
     </>
