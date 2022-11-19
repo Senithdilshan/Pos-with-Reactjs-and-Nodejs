@@ -8,6 +8,8 @@ import AddUser from "./Pages/User/AddUser/AddUser"
 import AddSupplier from "./Pages/Supplier/AddSupplier/AddSupplier"
 import AddToStock from "./Pages/Stock/StockTable/AddToStock"
 import ManageCustomers from "./Pages/Customer/ManageCustomers"
+import { Component } from "react"
+import ViewSupplier from "./Pages/Supplier/ViewSupplier/ViewSupplier"
 // import AddBill from "./Pages/Sales/AddBill/AddBill"
 
 export const routes = [
@@ -51,6 +53,10 @@ export const routes = [
     {
         path:'/manage-customers',
         Component: <ManageCustomers/>
+    },
+    {
+        path:'/viewsupplier',
+        Component: <ViewSupplier/>
     }
     // {
     //     path: '/addbill',

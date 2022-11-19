@@ -39,8 +39,8 @@ export const NavbarData=[
         cName:'nav-text'
     },
     {
-        title:'Add Supplier',
-        path:'/addsupplier',
+        title:'Suppliers',
+        path:'/viewsupplier',
         icon:<TbIcons.TbTruckDelivery/>,
         cName:'nav-text'
     },
