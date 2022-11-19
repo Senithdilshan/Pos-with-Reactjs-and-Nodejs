@@ -11,7 +11,9 @@ import ManageCustomers from "./Pages/Customer/ManageCustomers"
 import { Component } from "react"
 import ViewSupplier from "./Pages/Supplier/ViewSupplier/ViewSupplier"
 // import AddBill from "./Pages/Sales/AddBill/AddBill"
-
+import AddGRN from "./Pages/Stock/AddGRN/AddGRN"
+import ViewGRN from "./Pages/Stock/ViewGRN/ViewGRN"
+import OutofStocks from "./Pages/Stock/OutofStock/OutofStock"
 export const routes = [
     {
         path: '/login',
@@ -57,6 +59,18 @@ export const routes = [
     {
         path:'/viewsupplier',
         Component: <ViewSupplier/>
+    },
+    {
+        path:'/grn',
+        Component: <AddGRN/>
+    },
+    {
+        path:'/viewgrns',
+        Component: <ViewGRN/>
+    },
+    {
+        path:'/outofstock',
+        Component: <OutofStocks/>
     }
     // {
     //     path: '/addbill',
