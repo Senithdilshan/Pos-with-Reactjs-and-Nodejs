@@ -10,7 +10,7 @@ import AddToStock from "./Pages/Stock/StockTable/AddToStock"
 import ManageCustomers from "./Pages/Customer/ManageCustomers"
 import { Component } from "react"
 import ViewSupplier from "./Pages/Supplier/ViewSupplier/ViewSupplier"
-// import AddBill from "./Pages/Sales/AddBill/AddBill"
+import AddBill from "./Pages/Sales/AddBill/AddSale"
 import AddGRN from "./Pages/Stock/AddGRN/AddGRN"
 import ViewGRN from "./Pages/Stock/ViewGRN/ViewGRN"
 import OutofStocks from "./Pages/Stock/OutofStock/OutofStock"
@@ -71,11 +71,11 @@ export const routes = [
     {
         path:'/outofstock',
         Component: <OutofStocks/>
+    },
+    {
+        path: '/addbill',
+        Component: <AddBill/>
     }
-    // {
-    //     path: '/addbill',
-    //     Component: <AddBill/>
-    // },
     // {
     //     path: '/addbill/addcustomer',
     //     Component: <AddCustomer/>
