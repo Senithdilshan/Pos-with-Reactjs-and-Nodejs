@@ -87,6 +87,11 @@ import { jsPDF } from 'jspdf';
     function saveToDB() {
         window.location.reload(true);
     }
+    function searchBill(){
+        navigate('/search-bill');
+    }
+        
+    
 
     
 
@@ -163,8 +168,9 @@ import { jsPDF } from 'jspdf';
                 
                 <button type="submit" className="btn btn-info mt-2 m-1 " onClick={save}>Save</button>
                 <button type="submit" className="btn btn-dark mt-2 m-1" onClick={handleDownload}>Print</button>
-
                 <button type="submit" className="btn btn-dark mt-2 m-1" onClick={saveUser}>Loyalty Points</button>
+                <button type="submit" className="btn btn-dark mt-2 m-1" onClick={searchBill}>Search Bill</button>
+
             </div>
         </div>
         <div  ref={pdfRef}>
