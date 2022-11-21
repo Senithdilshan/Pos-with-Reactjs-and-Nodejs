@@ -14,6 +14,7 @@ import AddBill from "./Pages/Sales/AddBill/AddSale"
 import AddGRN from "./Pages/Stock/AddGRN/AddGRN"
 import ViewGRN from "./Pages/Stock/ViewGRN/ViewGRN"
 import OutofStocks from "./Pages/Stock/OutofStock/OutofStock"
+import SearchBill from "./Pages/Sales/AddBill/SearchBill/index"
 export const routes = [
     {
         path: '/login',
@@ -75,14 +76,14 @@ export const routes = [
     {
         path: '/addbill',
         Component: <AddBill/>
-    }
+    },
     // {
     //     path: '/addbill/addcustomer',
     //     Component: <AddCustomer/>
     // },
-    // {
-    //     path: '/search-bill',
-    //     Component: <SearchBill/>
-    // }
+    {
+        path: '/search-bill',
+        Component: <SearchBill/>
+    }
 
 ]
