@@ -15,6 +15,7 @@ import AddGRN from "./Pages/Stock/AddGRN/AddGRN"
 import ViewGRN from "./Pages/Stock/ViewGRN/ViewGRN"
 import OutofStocks from "./Pages/Stock/OutofStock/OutofStock"
 import SearchBill from "./Pages/Sales/AddBill/SearchBill/index"
+import UpdateStock from "./Pages/Stock/UpdateStock/UpdateStock"
 export const routes = [
     {
         path: '/login',
@@ -84,6 +85,10 @@ export const routes = [
     {
         path: '/search-bill',
         Component: <SearchBill/>
+    },
+    {
+        path: '/updatestock/:bno',
+        Component: <UpdateStock/>
     }
 
 ]

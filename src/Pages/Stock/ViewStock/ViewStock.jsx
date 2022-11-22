@@ -114,7 +114,7 @@ export default function ViewStock() {
                         <td>{getb.buyingPrice}</td>
                         <td>{getb.sellingPrice}</td>
                         <td>
-                          <Link to={'/stock'}>
+                          <Link to={'/updatestock/'+getb.batchNo}>
                             <button className="btn btn-primary"><AiIcons.AiTwotoneEdit /></button>
                           </Link>
                         </td>

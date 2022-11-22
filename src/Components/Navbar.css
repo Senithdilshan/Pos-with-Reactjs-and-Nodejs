@@ -79,6 +79,7 @@ span{
 
 .navButton{
     border-radius: 5px;
+    border-color: red;
     margin-top: 100%;
     margin-left:14px;
     font-size: 18px;
