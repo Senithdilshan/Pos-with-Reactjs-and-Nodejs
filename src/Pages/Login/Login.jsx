@@ -31,13 +31,13 @@ export default function Login() {
       .post('http://localhost:5000/user/login', data)
       .then(res => {
         localStorage.setItem("token","Bearer "+res.data.accessToken)
+        localStorage.setItem("level",res.data.level)
         setLoginStatus(true)
-        navigate('/stock')
+        navigate('/')
       })
       .catch(err => {
         setLoginStatus(false);
         window.alert('Login Faild')
-        console.log(err)
       })
   }
 
