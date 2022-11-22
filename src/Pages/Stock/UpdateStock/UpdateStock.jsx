@@ -63,7 +63,7 @@ export default function AddStock(props) {
         console.log(err)
       })
   }
-
+//-----------------------------------------------------------
   const fetchini = () => {
     setInitialValues({
       batchNo:bno,
