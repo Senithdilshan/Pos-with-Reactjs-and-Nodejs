@@ -1,10 +1,10 @@
 import axios from "axios"
 import { serverUrl } from "../../../Config"
 
-export function addProduct(data) {
-  const url = `${serverUrl}/product`
+export function updateProduct(data) {
+  const url = `${serverUrl}/stock`
 
-  return axios.post(url, data, {
+  return axios.put(url, data, {
     headers: {
       "authorization": localStorage.getItem("token")
     },

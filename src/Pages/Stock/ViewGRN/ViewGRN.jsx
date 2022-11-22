@@ -12,7 +12,11 @@ export default function ViewStock() {
   const [grn, setGrn] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/grn')
+      .get('http://localhost:5000/grn',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setGrn(res.data)

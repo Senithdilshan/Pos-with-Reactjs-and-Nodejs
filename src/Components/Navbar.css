@@ -76,3 +76,17 @@
 span{
     margin-left:16px;
 }
+
+.navButton{
+    border-radius: 5px;
+    border-color: red;
+    margin-top: 100%;
+    margin-left:14px;
+    font-size: 18px;
+    background-color:red;
+    color: white;
+    padding: 5px;
+}
+.navButton:hover{
+    background-color:#FF5733 ;
+}

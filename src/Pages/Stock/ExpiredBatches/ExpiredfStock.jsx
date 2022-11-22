@@ -11,7 +11,7 @@ export default function ViewStock() {
   const [stock, setStock] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock/outofstock/',{
+      .get('http://localhost:5000/batches/expired/',{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -33,7 +33,7 @@ export default function ViewStock() {
       <div className="container mt-3">
         <div className="row">
           <div className="col">
-           <h1 className='text-danger'>Out Of Stock List</h1>
+           <h1 className='text-danger'>Expired Batches In Stock</h1>
           </div>
         </div>
         <div className="row">
@@ -46,23 +46,23 @@ export default function ViewStock() {
                 <thead className="thead-light">
                   <tr>
                   <th scope="col">Product ID</th>
-                    <th scope="col">Warehouse</th>
-                    <th scope="col">Batch Number</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Buying Price (Rs.)</th>
-                    <th scope="col">Selling Price (Rs.)</th>
+                  <th scope="col">Batch Number</th>
+                  <th scope="col">Manufacture Date</th>
+                  <th scope="col">Expire Date</th>
+                  <th scope="col">Buying Price</th>
+                  <th scope="col">Selling Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   {
-                    stock.map(getb => (
-                      <tr key={getb.id}>
-                       <td>{getb.productId}</td>
-                        <td>{getb.warehouseID}</td>
-                        <td>{getb.batchNo}</td>
-                        <td>{getb.quantity}</td>
-                        <td>{getb.buyingPrice}</td>
-                        <td>{getb.sellingPrice}</td>
+                    stock.map(getbatch => (
+                      <tr key={getbatch.id}>
+                       <td>{getbatch.productId}</td>
+                      <td>{getbatch.batchNo}</td>
+                      <td>{getbatch.mfDate}</td>
+                      <td>{getbatch.exDate}</td>
+                      <td>{getbatch.buyingPrice}</td>
+                      <td>{getbatch.sellingPrice}</td>
                       </tr>
                     ))
                   }

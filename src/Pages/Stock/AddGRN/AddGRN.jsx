@@ -10,6 +10,9 @@ import { addgrn } from './AddGRN.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+
+
+
 export default function AddStock() {
   const navigate = useNavigate() 
   const [initialValues, setInitialValues] = useState({
@@ -24,7 +27,11 @@ export default function AddStock() {
   const [grn, setgrn] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/grn')
+      .get('http://localhost:5000/grn',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         console.log(res)
         setgrn(res.data)
@@ -38,7 +45,11 @@ export default function AddStock() {
   const [loadstock, setstock] = useState([]);
   const fetchstock = (formik) => {
     axios
-      .get("http://localhost:5000/stock/loadstock/")
+      .get("http://localhost:5000/stock/loadstock/",{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then((res) => {
         // console.log({res}, 'asdasd');
         // setstock(res.data)

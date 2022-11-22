@@ -15,7 +15,11 @@ export default function ViewStock() {
 
   const deletestock = (bNo) => {
     axios
-      .delete("http://localhost:5000/stock/" + bNo)
+      .delete("http://localhost:5000/stock/" + bNo,{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then((res) => {
 
         setdelete(res.data)
@@ -29,7 +33,11 @@ export default function ViewStock() {
 
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock')
+      .get('http://localhost:5000/stock',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setBatches(res.data)
@@ -48,17 +56,17 @@ export default function ViewStock() {
         <div className="row">
           <div className="col">
             <Link to={'/addstock'}>
-              <button className="btn btn-secondary">Add New Product</button>
+              <button className="btn btn-secondary">Add New Product to Shop</button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/addwarehouse'}>
-              <button className="btn btn-secondary">Add New Warehouse</button>
+              <button className="btn btn-secondary">Add New Warehouse to Shop</button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/addbatch'}>
-              <button className="btn btn-secondary">Add Batch Detalis</button>
+              <button className="btn btn-secondary">Add New Batch Detalis</button>
             </Link>
           </div>
           <div className="col">
@@ -68,12 +76,17 @@ export default function ViewStock() {
           </div>
           <div className="col">
             <Link to={'/viewgrns'}>
-              <button className="btn btn-success">View GRNs</button>
+              <button className="btn btn-success">View GRNs and Print</button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/outofstock'}>
-              <button className="btn btn-danger">Out of stock</button>
+              <button className="btn btn-danger">Out of stock Product List</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/batchexpired'}>
+              <button className="btn btn-danger">Expired Batches in Stocks</button>
             </Link>
           </div>
           <div className="row">
@@ -106,7 +119,7 @@ export default function ViewStock() {
                         <td>{getb.buyingPrice}</td>
                         <td>{getb.sellingPrice}</td>
                         <td>
-                          <Link to={'/stock'}>
+                          <Link to={'/updatestock/'+getb.batchNo}>
                             <button className="btn btn-primary"><AiIcons.AiTwotoneEdit /></button>
                           </Link>
                         </td>

@@ -15,7 +15,11 @@ export default function AddWarehouse() {
   const [warehouse, setwarehouse] = useState([]);
   const fetch =()=>{
     axios
-    .get('http://localhost:5000/warehouse')
+    .get('http://localhost:5000/warehouse',{
+      headers:{
+        "authorization":localStorage.getItem("token")
+      },
+    })
     .then(res=>{
       console.log(res)
       setwarehouse(res.data)
