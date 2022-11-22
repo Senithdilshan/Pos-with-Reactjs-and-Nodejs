@@ -15,7 +15,11 @@ export default function ViewStock() {
 
   const deletestock = (bNo) => {
     axios
-      .delete("http://localhost:5000/stock/" + bNo)
+      .delete("http://localhost:5000/stock/" + bNo,{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then((res) => {
 
         setdelete(res.data)
@@ -29,7 +33,11 @@ export default function ViewStock() {
 
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock')
+      .get('http://localhost:5000/stock',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setBatches(res.data)

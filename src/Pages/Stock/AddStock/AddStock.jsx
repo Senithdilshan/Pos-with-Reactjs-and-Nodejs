@@ -16,7 +16,11 @@ export default function AddStock() {
   const [product, setproduct] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/product')
+      .get('http://localhost:5000/product',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         console.log(res)
         setproduct(res.data)

@@ -6,9 +6,8 @@ export function addProduct(data) {
 
   return axios.post(url, data, {
     headers: {
-
-      'Content-Type': 'application/json'
-    }
+      "authorization": localStorage.getItem("token")
+    },
   });
 }
 

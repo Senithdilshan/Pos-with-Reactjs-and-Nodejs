@@ -11,7 +11,11 @@ export default function ViewStock() {
   const [stock, setStock] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock/outofstock/')
+      .get('http://localhost:5000/stock/outofstock/',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setStock(res.data)

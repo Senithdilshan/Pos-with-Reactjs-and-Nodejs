@@ -16,7 +16,11 @@ export default function AddBatch() {
   const [batch, setbatch] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/batches')
+      .get('http://localhost:5000/batches',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         console.log(res)
         setbatch(res.data)

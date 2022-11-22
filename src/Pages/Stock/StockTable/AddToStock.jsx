@@ -18,7 +18,11 @@ export default function AddToStock() {
   const [batches, setBatches] = useState([]);
   const fetchBatch = (pId) => {
     axios
-      .get(`http://localhost:5000/batches/byid/${pId}`)
+      .get(`http://localhost:5000/batches/byid/${pId}`,{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
 
       .then(res => {
         setBatches(res.data)
@@ -32,7 +36,11 @@ export default function AddToStock() {
   const [price, setprices] = useState([]);
   const fetchPrice = (bNo, formik) => {
     axios
-      .get("http://localhost:5000/batches/batchno/" + bNo)
+      .get("http://localhost:5000/batches/batchno/" + bNo,{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then((res) => {
 
         setprices(res.data)
@@ -47,7 +55,11 @@ export default function AddToStock() {
   const [product, setproduct] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/product')
+      .get('http://localhost:5000/product',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setproduct(res.data)
@@ -64,7 +76,11 @@ export default function AddToStock() {
   const [warehouse, setwarehouse] = useState([]);
   const fetchWarehouse = () => {
     axios
-      .get('http://localhost:5000/warehouse')
+      .get('http://localhost:5000/warehouse',{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setwarehouse(res.data)
