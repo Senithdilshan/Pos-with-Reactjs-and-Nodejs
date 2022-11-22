@@ -5,22 +5,21 @@ import { Formik, Form } from 'formik';
 import TextFields from './TextFields';
 import * as Yup from 'yup';
 import './add.css'
-import * as AiIcons from "react-icons/ai";
 
-import { addSupplier } from './Addsupplier.helper';
+import { addBank } from './Addbank.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function AddSupplier() {
+export default function AddBank() {
 
-  const [supplier, setsupplier] = useState([]);
+  const [bank, setbank] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/supplier')
+      .get('http://localhost:5000/bank')
       .then(res => {
         console.log(res)
-        setsupplier(res.data)
+        setbank(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -31,10 +30,10 @@ export default function AddSupplier() {
   }, [])
 
   const validate = Yup.object({
-    supplierId: Yup.string().required('required'),
-    supplierName: Yup.string().required('required'),
-    supplierAddress: Yup.string().required('required'),
-    supplierContactNumber: Yup.string().required('required'),
+    accountNumber: Yup.string().required('required'),
+    accountName: Yup.string().required('required'),
+    bankName: Yup.string().required('required'),
+    branchName: Yup.string().required('required'),
   })
   return (
     <>
@@ -44,10 +43,10 @@ export default function AddSupplier() {
           <div className="col md-5" >
             <Formik
               initialValues={{
-                supplierId: '',
-                supplierName: '',
-                supplierAddress: '',
-                supplierContactNumber: ''
+                accountNumber: '',
+                accountName: '',
+                bankName: '',
+                branchName: ''
               }}
               validationSchema={validate}
             >
@@ -55,25 +54,25 @@ export default function AddSupplier() {
                 console.log(formik);
                 return (
                   <div>
-                    <h1 className="my-4 font-weight-bold-display-4">Add Supplier</h1>
+                    <h1 className="my-4 font-weight-bold-display-4">Add Bank</h1>
                     <Form>
-                      <TextFields label="Supplier ID" name="supplierId" type="text" />
-                      <TextFields label="Supplier Name" name="supplierName" type="text" />
-                      <TextFields label="Supplier Address" name="supplierAddress" type="text" />
-                      <TextFields label="Supplier Contact Number" name="supplierContactNumber" type="text" />
+                      <TextFields label="Account Number" name="accountNumber" type="text" />
+                      <TextFields label="Account Name" name="accountName" type="text" />
+                      <TextFields label="Bank Name" name="bankName" type="text" />
+                      <TextFields label="Branch Name" name="branchName" type="text" />
                       <button className="add" onClick={() => {
-                        addSupplier(formik.values)
+                        addBank(formik.values)
                           .then(() => {
                             formik.resetForm()
                             fetch()
-                            window.alert('Supplier Added Successfully')
+                            window.alert('Bank was added Successfully')
                           })
                           .catch((err) => {
-                            window.alert('Failed to Add Supplier')
+                            window.alert('Failed to Add Bank')
                           })
-                      }}>Add Supplier</button>
+                      }}>Add Bank</button>
                       <button className="reset" type='reset'>Reset</button>
-                      <Link to={'/viewsupplier'}>
+                      <Link to={'/'}>
                         <button className="back">Back</button>
                       </Link>
                     </Form>
@@ -90,24 +89,20 @@ export default function AddSupplier() {
             <table className="table table-striped table-dark">
               <thead className="thead-light">
                 <tr>
-                  <th scope="col">Supplier ID</th>
-                  <th scope="col">Supplier Name</th>
-                  <th scope="col">Supplier Address</th>
-                  <th scope="col">Supplier Contact Number</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
+                  <th scope="col">Account Number</th>
+                  <th scope="col">Account Name</th>
+                  <th scope="col">Bank Name</th>
+                  <th scope="col">Branch Name</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  supplier.map(getp => (
-                    <tr key={getp.id}>
-                      <td>{getp.supplierId}</td>
-                      <td>{getp.supplierName}</td>
-                      <td>{getp.supplierAddress}</td>
-                      <td>{getp.supplierContactNumber}</td>
-                      <td><AiIcons.AiTwotoneEdit /></td>
-                      <td><AiIcons.AiFillDelete /></td>
+                  bank.map(getb => (
+                    <tr key={getb.id}>
+                      <td>{getb.accountNumber}</td>
+                      <td>{getb.accountName}</td>
+                      <td>{getb.bankName}</td>
+                      <td>{getb.branchName}</td>
                     </tr>
                   ))
                 }

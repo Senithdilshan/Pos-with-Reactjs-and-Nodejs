@@ -14,6 +14,8 @@ import ViewSupplier from "./Pages/Supplier/ViewSupplier/ViewSupplier"
 import AddGRN from "./Pages/Stock/AddGRN/AddGRN"
 import ViewGRN from "./Pages/Stock/ViewGRN/ViewGRN"
 import OutofStocks from "./Pages/Stock/OutofStock/OutofStock"
+import AddBank from "./Pages/Bank/AddBank/AddBank"
+import AddSupplierPayment from "./Pages/Supplier/AddSupplierPayments/AddSupplierPayment"
 export const routes = [
     {
         path: '/login',
@@ -71,6 +73,14 @@ export const routes = [
     {
         path:'/outofstock',
         Component: <OutofStocks/>
+    },
+    {
+        path: '/addbank',
+        Component:<AddBank/>
+    },
+    {
+        path: '/addsupplierpayment',
+        Component:<AddSupplierPayment/>
     }
     // {
     //     path: '/addbill',

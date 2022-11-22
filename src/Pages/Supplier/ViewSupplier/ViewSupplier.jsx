@@ -33,8 +33,8 @@ export default function ViewSupplier() {
             </Link>
           </div>
           <div className="col">
-            <Link to={'/addwarehouse'}>
-              <button className="btn btn-secondary">Supplier Payments</button>
+            <Link to={'/addsupplierpayment'}>
+              <button className="btn btn-secondary">Add Supplier Payments</button>
             </Link>
           </div>
           <div className="col">
