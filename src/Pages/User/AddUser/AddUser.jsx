@@ -7,6 +7,7 @@ import TextFields from './UsertextFields';
 import * as Yup from 'yup'; //to do the validations
 import './add_user.css' //done
 import { adduser } from './adduser.helper';
+import { Link } from "react-router-dom";
 
 export default function AddUser() { //validations 
   const validate = Yup.object({
@@ -33,7 +34,7 @@ export default function AddUser() { //validations
                 mobileNo:'', 
                 email:'', 
                 address:'',
-                userLevel:'',
+                userLevel: '',
                 password:'',
                 confirm_password:'',
                 DOB:'',
@@ -67,6 +68,9 @@ export default function AddUser() { //validations
                           })
                       }}>Add User</button>
                     <button className="reset" type='reset'>Reset</button>
+                    <Link to={'/viewuser'}>
+                      <button className="back">Back</button>
+                    </Link>
                     {/* <div></div> */}
                   </Form>
                 </div>
