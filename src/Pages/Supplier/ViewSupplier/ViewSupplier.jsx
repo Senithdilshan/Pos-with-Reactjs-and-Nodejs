@@ -3,15 +3,39 @@ import Navbar from '../../../Components/Navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import * as AiIcons from "react-icons/ai";
 
 
 
 export default function ViewSupplier() {
   const ref=useRef()
   const [supplier, setSupplier] = useState([]);
+  const [remove, setdelete] = useState([]);
+
+  const deleteSupplier = (supplierId) => {
+    axios
+      .delete("http://localhost:5000/supplier/" + supplierId,{
+        headers:{
+          "authorization":localStorage.getItem("token")
+        },
+      })
+      .then((res) => {
+
+        setdelete(res.data)
+
+      })
+      .catch((err) => console.log(err))
+  }
+
+
+
   const fetch = () => {
     axios
-      .get('http://localhost:5000/supplier')
+      .get('http://localhost:5000/supplier' , {
+        headers: {
+          "authorization": localStorage.getItem("token")
+        },
+      })
       .then(res => {
         setSupplier(res.data)
       })
@@ -57,6 +81,8 @@ export default function ViewSupplier() {
                     <th scope="col">Supplier Address</th>
                     <th scope="col">Supplier Contact Number</th>
                     <th scope='col'>Supplier Outstanding Amount</th>
+                    <th scope='col'>Edit</th>
+                    <th scope='col'>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,6 +94,22 @@ export default function ViewSupplier() {
                         <td>{gets.supplierAddress}</td>
                         <td>{gets.supplierContactNumber}</td>
                         <td>{gets.outstandingAmount}</td>
+                        <td>
+                          <Link to={'/updatesupplier/'+gets.supplierId}>
+                            <button className="btn btn-primary"><AiIcons.AiTwotoneEdit /></button>
+                          </Link>
+                        </td>
+                        <td>
+                          <Link to={'/viewsupplier'}>
+                            <button className="btn btn-danger"
+                              onClick={() => {
+                                deleteSupplier(gets.supplierId)
+                                window.alert('Supplier Deleted Successfully')
+                                fetch()
+                              }}
+                            ><AiIcons.AiFillDelete /></button>
+                          </Link>
+                        </td>
                       </tr>
                     ))
                   }

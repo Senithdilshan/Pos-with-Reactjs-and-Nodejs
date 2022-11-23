@@ -19,6 +19,9 @@ import AddSupplierPayment from "./Pages/Supplier/AddSupplierPayments/AddSupplier
 import SearchBill from "./Pages/Sales/AddBill/SearchBill/index"
 import UpdateStock from "./Pages/Stock/UpdateStock/UpdateStock"
 import ExpiredBatch from "./Pages/Stock/ExpiredBatches/ExpiredfStock"
+import ViewUser from "./Pages/User/ViewUser/ViewUser"
+import UpdateSupplier from "./Pages/Supplier/UpdateSupplier/UpdateSupplier"
+import UpdateUser from "./Pages/User/UpdateUser/UpdateUser"
 export const routes = [
     {
         path: '/login',
@@ -100,11 +103,22 @@ export const routes = [
     {
         path: '/updatestock/:bno',
         Component: <UpdateStock/>
-    }
-    ,
+    },
     {
         path: '/batchexpired',
         Component: <ExpiredBatch/>
+    },
+    {
+        path: '/viewuser',
+        Component: <ViewUser/>
+    },
+    {
+        path: '/updatesupplier/:sid',
+        Component: <UpdateSupplier/>
+    },
+    {
+        path: '/updateuser/:uid',
+        Component: <UpdateUser/>
     }
 
 ]

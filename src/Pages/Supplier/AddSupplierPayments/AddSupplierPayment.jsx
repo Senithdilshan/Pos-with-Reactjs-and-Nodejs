@@ -18,7 +18,11 @@ export default function AddSupplierPayment() {
   const [Supplier, setsupplier] = useState([]);
   const fetchsupplier = () => {
     axios
-      .get('http://localhost:5000/supplier')
+      .get('http://localhost:5000/supplier', {
+        headers: {
+          "authorization": localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setsupplier(res.data)
@@ -35,7 +39,11 @@ export default function AddSupplierPayment() {
   const [bank, setbank] = useState([]);
   const fetchbank = () => {
     axios
-      .get('http://localhost:5000/bank')
+      .get('http://localhost:5000/bank' , {
+        headers: {
+          "authorization": localStorage.getItem("token")
+        },
+      })
       .then(res => {
         // console.log(res)
         setbank(res.data)
@@ -163,7 +171,7 @@ export default function AddSupplierPayment() {
                               formik.resetForm()
                               fetch()
                               window.alert('Payment Added Successfully')
-                              navigate('/grn')
+                              navigate('/viewsupplier')
                             })
                             .catch((err) => {
                               window.alert('Failed to Add the payment')

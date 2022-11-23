@@ -1,10 +1,10 @@
 import axios from "axios"
 import { serverUrl } from "../../../Config"
 
-export function adduser(data) {
-  const url = `${serverUrl}/user`
+export function updateSupplier(data) {
+  const url = `${serverUrl}/supplier`
 
-  return axios.post(url, data, {
+  return axios.put(url, data, {
     headers: {
       "authorization": localStorage.getItem("token")
     },

@@ -36,7 +36,7 @@ function Navbar() {
             return (
                 <>
                  <li className="nav-text">
-                        <Link to={'/adduser'}><AiIcons.AiOutlineUserAdd /><span>User Management</span></Link>
+                        <Link to={'/viewuser'}><AiIcons.AiOutlineUserAdd /><span>User Management</span></Link>
                     </li>
                     <li className="nav-text">
                         <Link to={'/stock'}><MdIcons.MdInventory /><span>Stock</span></Link>
