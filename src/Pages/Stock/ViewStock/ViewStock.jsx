@@ -6,6 +6,7 @@ import axios from 'axios';
 // import ReactToPrint from 'react-to-print';
 import * as AiIcons from "react-icons/ai";
 import { Center } from '@mantine/core';
+import { serverUrl } from '../../../Config';
 
 
 
@@ -20,7 +21,7 @@ export default function ViewStock() {
 
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock', {
+      .get(`${serverUrl}/stock`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
@@ -40,7 +41,7 @@ export default function ViewStock() {
   //--------------------------------------------------------
   const deletestock = (bNo) => {
     axios
-      .delete("http://localhost:5000/stock/" + bNo, {
+      .delete(`${serverUrl}/stock/` + bNo, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
@@ -109,7 +110,7 @@ export default function ViewStock() {
           </div>
 {/* ------------------------------Search----------------------------------------------------------------- */}
           <div className="row">
-            <h1 style={{ marginTop: 30,marginBottom:10, backgroundColor: "blue", color: "white",borderRadius:10,width:300}}>Search In Stock</h1>
+            <h2 style={{ marginTop: 30,marginBottom:10, backgroundColor: "blue", color: "white",borderRadius:10,width:240,padding:5}}>Search In Stock</h2>
             <input
               type="text"
               className="form-control mt-1"
@@ -120,7 +121,7 @@ export default function ViewStock() {
           </div>
 {/* //--------------------------------------------------------------------------------------------- */}
           <div className="row">
-            <h2 style={{ backgroundColor: "blue", color: "white" ,marginTop:50, width:103,borderRadius:10}}>Stock</h2>
+            <h2 style={{ backgroundColor: "blue", color: "white" ,marginTop:50, width:95,borderRadius:10,padding:5}}>Stock</h2>
           </div>
           <div className="row">
             <div className="col md-7" style={{

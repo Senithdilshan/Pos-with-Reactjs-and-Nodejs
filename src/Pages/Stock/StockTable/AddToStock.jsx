@@ -10,6 +10,7 @@ import { addStock } from './Addtostock.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { serverUrl } from "../../../Config";
 
 
 export default function AddToStock() {
@@ -18,7 +19,7 @@ export default function AddToStock() {
   const [batches, setBatches] = useState([]);
   const fetchBatch = (pId) => {
     axios
-      .get(`http://localhost:5000/batches/byid/${pId}`,{
+      .get(`${serverUrl}/batches/byid/${pId}`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -36,7 +37,7 @@ export default function AddToStock() {
   const [price, setprices] = useState([]);
   const fetchPrice = (bNo, formik) => {
     axios
-      .get("http://localhost:5000/batches/batchno/" + bNo,{
+      .get(`${serverUrl}/batches/batchno/ `+ bNo,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -55,7 +56,7 @@ export default function AddToStock() {
   const [product, setproduct] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/product',{
+      .get(`${serverUrl}/product`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -76,7 +77,7 @@ export default function AddToStock() {
   const [warehouse, setwarehouse] = useState([]);
   const fetchWarehouse = () => {
     axios
-      .get('http://localhost:5000/warehouse',{
+      .get(`${serverUrl}/warehouse`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },

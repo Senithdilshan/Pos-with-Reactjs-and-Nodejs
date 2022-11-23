@@ -10,6 +10,7 @@ import { addgrn, updateoutStanding} from './AddGRN.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { serverUrl } from "../../../Config";
 
 
 
@@ -27,7 +28,7 @@ export default function AddStock() {
   const [grn, setgrn] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/grn',{
+      .get(`${serverUrl}/grn`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -44,7 +45,7 @@ export default function AddStock() {
   const [loadstock, setstock] = useState([]);
   const fetchstock = (formik) => {
     axios
-      .get("http://localhost:5000/stock/loadstock/",{
+      .get(`${serverUrl}/stock/loadstock/`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },

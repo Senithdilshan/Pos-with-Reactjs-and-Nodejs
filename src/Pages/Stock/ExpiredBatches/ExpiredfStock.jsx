@@ -3,6 +3,7 @@ import Navbar from '../../../Components/Navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { serverUrl } from '../../../Config';
 
 
 
@@ -11,7 +12,7 @@ export default function ViewStock() {
   const [stock, setStock] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/batches/expired/',{
+      .get(`${serverUrl}/batches/expired/`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },

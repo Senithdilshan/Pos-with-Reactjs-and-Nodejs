@@ -9,6 +9,7 @@ import * as AiIcons from "react-icons/ai";
 import { addbatch } from './Addbatch.helper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { serverUrl } from '../../../Config';
 
 
 export default function AddBatch() {
@@ -16,7 +17,7 @@ export default function AddBatch() {
   const [batch, setbatch] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/batches',{
+      .get(`${serverUrl}/batches`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -36,7 +37,7 @@ export default function AddBatch() {
 const [remove, setdelete] = useState([]);
 const deleting = (bNo) => {
   axios
-    .delete("http://localhost:5000/batches/" + bNo,{
+    .delete(`${serverUrl}/batches/` + bNo,{
       headers:{
         "authorization":localStorage.getItem("token")
       },

@@ -11,13 +11,14 @@ import { addProduct } from './Addproduct.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { serverUrl } from "../../../Config";
 export default function AddStock() {
 
   //------------------------------------------fetch product
   const [product, setproduct] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/product',{
+      .get(`${serverUrl}/product`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -37,7 +38,7 @@ export default function AddStock() {
 const [remove, setdelete] = useState([]);
 const deleting = (pid) => {
   axios
-    .delete("http://localhost:5000/product/" + pid,{
+    .delete(`${serverUrl}/product/` + pid,{
       headers:{
         "authorization":localStorage.getItem("token")
       },

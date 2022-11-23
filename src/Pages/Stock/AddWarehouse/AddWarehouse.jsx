@@ -9,13 +9,14 @@ import axios from 'axios';
 import * as AiIcons from "react-icons/ai";
 import { addwarehouse } from './AddWarehouse.helper';
 import { Link } from 'react-router-dom';
+import { serverUrl } from '../../../Config';
 
 export default function AddWarehouse() {
 
   const [warehouse, setwarehouse] = useState([]);
   const fetch =()=>{
     axios
-    .get('http://localhost:5000/warehouse',{
+    .get(`${serverUrl}/warehouse`,{
       headers:{
         "authorization":localStorage.getItem("token")
       },
@@ -35,7 +36,7 @@ export default function AddWarehouse() {
 const [remove, setdelete] = useState([]);
 const deleting = (wid) => {
   axios
-    .delete("http://localhost:5000/warehouse/" + wid,{
+    .delete(`${serverUrl}/warehouse/` + wid,{
       headers:{
         "authorization":localStorage.getItem("token")
       },

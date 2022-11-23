@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Select } from "@mantine/core";
+import { serverUrl } from "../../../Config";
 
 
 export default function AddStock(props) {
@@ -24,7 +25,7 @@ export default function AddStock(props) {
   
   const fetch = () => {
     axios
-      .get('http://localhost:5000/stock', {
+      .get(`${serverUrl}/stock`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
@@ -50,7 +51,7 @@ export default function AddStock(props) {
   //-----------------------------------------------------------------------------------
   const fetchWarehouse = () => {
     axios
-      .get('http://localhost:5000/warehouse', {
+      .get(`${serverUrl}/warehouse`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },

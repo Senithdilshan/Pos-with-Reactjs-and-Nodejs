@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactToPrint from 'react-to-print';
+import { serverUrl } from '../../../Config';
 
 
 
@@ -12,7 +13,7 @@ export default function ViewStock() {
   const [grn, setGrn] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/grn',{
+      .get(`${serverUrl}/grn`,{
         headers:{
           "authorization":localStorage.getItem("token")
         },

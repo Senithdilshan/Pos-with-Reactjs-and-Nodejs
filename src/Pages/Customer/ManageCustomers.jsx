@@ -33,7 +33,7 @@ const ManageCustomers = () => {
   const fetch = () => {
     if (searchTerm) {
       axios
-        .get(`http://localhost:5000/manage-customers?searchTerm=${searchTerm}`)
+        .get(`${serverUrl}/manage-customers?searchTerm=${searchTerm}`)
         .then((res) => {
           setmngCustomers(res.data);
         })
@@ -42,7 +42,7 @@ const ManageCustomers = () => {
         });
     } else {
       axios
-        .get("http://localhost:5000/manage-customers")
+        .get(`${serverUrl}/manage-customers`)
         .then((res) => {
           setmngCustomers(res.data);
         })
@@ -121,7 +121,7 @@ const ManageCustomers = () => {
                             onClick={() => {
                               axios
                                 .get(
-                                  `http://localhost:5000/manage-customers/sendEmail`
+                                  `${serverUrl}/manage-customers/sendEmail`
                                 )
                                 .then((res) => {
                                   alert("Email sent successfully");
@@ -137,7 +137,7 @@ const ManageCustomers = () => {
                       </div>
                       <div className="col-md-7 col-lg-3 d-flex ">
                         <a
-                          href="http://localhost:5000/manage-customers/export-csv"
+                          href="${serverUrl}/manage-customers/export-csv"
                           download="Document.pdf"
                           style={{ textDecoration: "none" }}
                         >
