@@ -30,6 +30,7 @@ export default function Login() {
     axios
       .post('http://localhost:5000/user/login', data)
       .then(res => {
+        axios.post('http://localhost:5000/user/userlog', data)
         localStorage.setItem("token","Bearer "+res.data.accessToken)
         localStorage.setItem("level",res.data.level)
         setLoginStatus(true)

@@ -6,7 +6,7 @@ import TextFields from '../AddSupplierPayments/TextFields';
 import * as Yup from 'yup';
 import './add.css'
 import { Select, TextInput } from "@mantine/core";
-import { addSupplierPayment } from './Addsupplierpayment.helper';
+import { addSupplierPayment, updateoutStanding } from './Addsupplierpayment.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -168,6 +168,7 @@ export default function AddSupplierPayment() {
                         onClick={() => {
                           addSupplierPayment(formik.values)
                             .then(() => {
+                              updateoutStanding(formik.values)
                               formik.resetForm()
                               fetch()
                               window.alert('Payment Added Successfully')

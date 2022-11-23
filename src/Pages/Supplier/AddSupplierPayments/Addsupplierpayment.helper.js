@@ -10,3 +10,13 @@ export function addSupplierPayment(data) {
     },
   });
 }
+
+export function updateoutStanding(data) {
+  const url = `${serverUrl}/supplier/updateoutstanding/`
+
+  return axios.put(url, data, {
+    headers: {
+      "authorization": localStorage.getItem("token")
+    },
+  });
+}
