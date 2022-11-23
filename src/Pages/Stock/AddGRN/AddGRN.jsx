@@ -6,7 +6,7 @@ import TextFields from './TextFields';
 import * as Yup from 'yup';
 import './add.css'
 
-import { addgrn } from './AddGRN.helper';
+import { addgrn, updateoutStanding} from './AddGRN.helper';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,7 +40,6 @@ export default function AddStock() {
         console.log(err)
       })
   }
-
 
   const [loadstock, setstock] = useState([]);
   const fetchstock = (formik) => {
@@ -111,6 +110,7 @@ export default function AddStock() {
                         onClick={() => {
                           addgrn(formik.values)
                             .then(() => {
+                              updateoutStanding(formik.values)
                               formik.resetForm()
                               fetch()
                               window.alert('GRN Added Sucessfully')

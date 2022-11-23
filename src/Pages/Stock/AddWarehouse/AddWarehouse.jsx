@@ -31,7 +31,23 @@ export default function AddWarehouse() {
   useEffect(()=>{
     fetch()
     },[])
+//-------------------------------------------delete Product
+const [remove, setdelete] = useState([]);
+const deleting = (wid) => {
+  axios
+    .delete("http://localhost:5000/warehouse/" + wid,{
+      headers:{
+        "authorization":localStorage.getItem("token")
+      },
+    })
+    .then((res) => {
 
+      setdelete(res.data)
+
+    })
+    .catch((err) => console.log(err))
+}
+//------------------------------------------------------------
   const validate = Yup.object({
     warehouseID: Yup.string().required('required'),
     location: Yup.string().required('required'),
@@ -86,7 +102,6 @@ export default function AddWarehouse() {
                   <th scope="col">Warehouse ID</th>
                   <th scope="col">Location</th>
                   <th scope="col"></th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -95,8 +110,17 @@ export default function AddWarehouse() {
                     <tr key={getwh.id}>
                       <td>{getwh.warehouseID}</td>
                       <td>{getwh.location}</td>
-                      <td><AiIcons.AiTwotoneEdit/></td>
-                      <td><AiIcons.AiFillDelete/></td>
+                      <td>
+                          <Link to={'/addwarehouse'}>
+                            <button className="btn btn-danger"
+                              onClick={() => {
+                                deleting(getwh.warehouseID)
+                                window.alert('Warehouse Deleted Sucessfully')
+                                fetch()
+                              }}
+                            ><AiIcons.AiFillDelete /></button>
+                          </Link>
+                        </td>
                     </tr>
                   ))
                 }

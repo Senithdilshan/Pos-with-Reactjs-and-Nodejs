@@ -32,7 +32,23 @@ export default function AddBatch() {
   useEffect(() => {
     fetch()
   }, [])
+//-------------------------------------------delete----------------------
+const [remove, setdelete] = useState([]);
+const deleting = (bNo) => {
+  axios
+    .delete("http://localhost:5000/batches/" + bNo,{
+      headers:{
+        "authorization":localStorage.getItem("token")
+      },
+    })
+    .then((res) => {
 
+      setdelete(res.data)
+
+    })
+    .catch((err) => console.log(err))
+}
+//------------------------------------------------------------
   const validate = Yup.object({
     productId: Yup.string().required('required'),
     batchNo: Yup.string().required('required'),
@@ -106,7 +122,6 @@ export default function AddBatch() {
                   <th scope="col">Buying Price</th>
                   <th scope="col">Selling Price</th>
                   <th scope="col"></th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -119,8 +134,17 @@ export default function AddBatch() {
                       <td>{getbatch.exDate}</td>
                       <td>{getbatch.buyingPrice}</td>
                       <td>{getbatch.sellingPrice}</td>
-                      <td><AiIcons.AiTwotoneEdit /></td>
-                      <td><AiIcons.AiFillDelete /></td>
+                      <td>
+                          <Link to={'/addbatch'}>
+                            <button className="btn btn-danger"
+                              onClick={() => {
+                                deleting(getbatch.batchNo)
+                                window.alert('Batch Deleted Sucessfully')
+                                fetch()
+                              }}
+                            ><AiIcons.AiFillDelete /></button>
+                          </Link>
+                        </td>
                     </tr>
                   ))
                 }

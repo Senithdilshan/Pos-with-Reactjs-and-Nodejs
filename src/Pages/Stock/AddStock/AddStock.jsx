@@ -13,6 +13,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 export default function AddStock() {
 
+  //------------------------------------------fetch product
   const [product, setproduct] = useState([]);
   const fetch = () => {
     axios
@@ -32,7 +33,23 @@ export default function AddStock() {
   useEffect(() => {
     fetch()
   }, [])
+//-------------------------------------------delete Product
+const [remove, setdelete] = useState([]);
+const deleting = (pid) => {
+  axios
+    .delete("http://localhost:5000/product/" + pid,{
+      headers:{
+        "authorization":localStorage.getItem("token")
+      },
+    })
+    .then((res) => {
 
+      setdelete(res.data)
+
+    })
+    .catch((err) => console.log(err))
+}
+//------------------------------------------------------------
   const validate = Yup.object({
     productId: Yup.string().required('required'),
     barcode: Yup.string().required('required'),
@@ -100,7 +117,6 @@ export default function AddStock() {
                   <th scope="col">Barcode</th>
                   <th scope="col">Product Name</th>
                   <th scope="col"></th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -110,8 +126,17 @@ export default function AddStock() {
                       <td>{getp.productId}</td>
                       <td>{getp.barcode}</td>
                       <td>{getp.productName}</td>
-                      <td><AiIcons.AiTwotoneEdit /></td>
-                      <td><AiIcons.AiFillDelete /></td>
+                      <td>
+                          <Link to={'/addstock'}>
+                            <button className="btn btn-danger"
+                              onClick={() => {
+                                deleting(getp.productId)
+                                window.alert('Product Deleted Sucessfully')
+                                fetch()
+                              }}
+                            ><AiIcons.AiFillDelete /></button>
+                          </Link>
+                        </td>
                     </tr>
                   ))
                 }
