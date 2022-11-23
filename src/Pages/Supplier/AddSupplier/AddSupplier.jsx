@@ -6,6 +6,7 @@ import TextFields from './TextFields';
 import * as Yup from 'yup';
 import './add.css'
 import * as AiIcons from "react-icons/ai";
+import { serverUrl } from '../../../Config';
 
 import { addSupplier } from './Addsupplier.helper';
 import { useEffect } from "react";
@@ -17,7 +18,7 @@ export default function AddSupplier() {
   const [supplier, setsupplier] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/supplier' , {
+      .get(`${serverUrl}/supplier` , {
         headers: {
           "authorization": localStorage.getItem("token")
         },
@@ -74,6 +75,7 @@ export default function AddSupplier() {
                           })
                           .catch((err) => {
                             window.alert('Failed to Add Supplier')
+                            console.log(err)
                           })
                       }}>Add Supplier</button>
                       <button className="reset" type='reset'>Reset</button>
@@ -98,8 +100,6 @@ export default function AddSupplier() {
                   <th scope="col">Supplier Name</th>
                   <th scope="col">Supplier Address</th>
                   <th scope="col">Supplier Contact Number</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -110,8 +110,6 @@ export default function AddSupplier() {
                       <td>{getp.supplierName}</td>
                       <td>{getp.supplierAddress}</td>
                       <td>{getp.supplierContactNumber}</td>
-                      <td><AiIcons.AiTwotoneEdit /></td>
-                      <td><AiIcons.AiFillDelete /></td>
                     </tr>
                   ))
                 }

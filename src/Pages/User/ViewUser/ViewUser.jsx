@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as AiIcons from "react-icons/ai";
+import { serverUrl } from '../../../Config';
 
 export default function ViewUser() {
   const ref=useRef()
@@ -12,7 +13,7 @@ export default function ViewUser() {
 
   const deleteUser = (user_id) => {
     axios
-      .delete("http://localhost:5000/user/" + user_id,{
+      .delete(`${serverUrl}/user/` + user_id,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -27,7 +28,7 @@ export default function ViewUser() {
 
   const fetch = () => {
     axios
-      .get('http://localhost:5000/user' , {
+      .get(`${serverUrl}/user` , {
         headers: {
           "authorization": localStorage.getItem("token")
         },

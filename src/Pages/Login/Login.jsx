@@ -5,6 +5,7 @@ import Navbar from '../../Components/Navbar'
 import './Login.css'
 // import { passwordcheck } from './Login.helper'
 import { Link } from 'react-router-dom';
+import { serverUrl } from '../../Config';
 
 
 
@@ -28,9 +29,9 @@ export default function Login() {
     console.log({data});
    
     axios
-      .post('http://localhost:5000/user/login', data)
+      .post(`${serverUrl}/user/login`, data)
       .then(res => {
-        axios.post('http://localhost:5000/user/userlog', data)
+        axios.post(`${serverUrl}/user/userlog`, data)
         localStorage.setItem("token","Bearer "+res.data.accessToken)
         localStorage.setItem("level",res.data.level)
         setLoginStatus(true)

@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import TextFields from './TextFields';
 import * as Yup from 'yup';
 import './add.css'
-
+import { serverUrl } from "../../../Config"
 import { addBank } from './Addbank.helper';
 import { useEffect } from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ export default function AddBank() {
   const [bank, setbank] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/bank')
+      .get(`${serverUrl}/bank`)
       .then(res => {
         console.log(res)
         setbank(res.data)
@@ -65,10 +65,10 @@ export default function AddBank() {
                           .then(() => {
                             formik.resetForm()
                             fetch()
-                            window.alert('Bank was added Successfully')
+                            window.alert('Bank account was added Successfully')
                           })
                           .catch((err) => {
-                            window.alert('Failed to Add Bank')
+                            window.alert('Failed to Add Bank account')
                           })
                       }}>Add Bank</button>
                       <button className="reset" type='reset'>Reset</button>

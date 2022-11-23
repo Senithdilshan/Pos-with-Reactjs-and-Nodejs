@@ -4,13 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactToPrint from 'react-to-print';
+import { serverUrl } from '../../../Config';
 
 
 export default function UserManage() {
   const [adduser, setUser] = useState([]);
   const fetch = () => {
     axios
-      .get('http://localhost:5000/user')
+      .get(`${serverUrl}/user`)
       .then(res => {
         // console.log(res)
         setUser(res.data)

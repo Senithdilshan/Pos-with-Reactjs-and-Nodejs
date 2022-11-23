@@ -6,6 +6,7 @@ import TextFields from '../AddSupplierPayments/TextFields';
 import * as Yup from 'yup';
 import './add.css'
 import { Select, TextInput } from "@mantine/core";
+import { serverUrl } from '../../../Config';
 import { addSupplierPayment, updateoutStanding } from './Addsupplierpayment.helper';
 import { useEffect } from "react";
 import axios from "axios";
@@ -18,7 +19,7 @@ export default function AddSupplierPayment() {
   const [Supplier, setsupplier] = useState([]);
   const fetchsupplier = () => {
     axios
-      .get('http://localhost:5000/supplier', {
+      .get(`${serverUrl}/supplier`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
@@ -39,7 +40,7 @@ export default function AddSupplierPayment() {
   const [bank, setbank] = useState([]);
   const fetchbank = () => {
     axios
-      .get('http://localhost:5000/bank' , {
+      .get(`${serverUrl}/bank` , {
         headers: {
           "authorization": localStorage.getItem("token")
         },

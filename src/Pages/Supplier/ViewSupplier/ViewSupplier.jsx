@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as AiIcons from "react-icons/ai";
+import { serverUrl } from '../../../Config';
 
 
 
@@ -14,7 +15,7 @@ export default function ViewSupplier() {
 
   const deleteSupplier = (supplierId) => {
     axios
-      .delete("http://localhost:5000/supplier/" + supplierId,{
+      .delete(`${serverUrl}/supplier/` + supplierId,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
@@ -31,7 +32,7 @@ export default function ViewSupplier() {
 
   const fetch = () => {
     axios
-      .get('http://localhost:5000/supplier' , {
+      .get(`${serverUrl}/supplier` , {
         headers: {
           "authorization": localStorage.getItem("token")
         },

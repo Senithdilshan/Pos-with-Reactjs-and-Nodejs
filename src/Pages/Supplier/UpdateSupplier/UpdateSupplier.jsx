@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import TextFields from './TextFields';
 import * as Yup from 'yup';
 import './add.css'
-
+import { serverUrl } from '../../../Config';
 import { updateSupplier } from './UpdateSupplier.helper';
 import { useEffect } from "react";
 import axios from "axios";
@@ -22,7 +22,7 @@ export default function UpdateSupplier(props) {
   
   const fetch = () => {
     axios
-      .get('http://localhost:5000/supplier', {
+      .get(`${serverUrl}/supplier`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
