@@ -15,7 +15,7 @@ export default function Home() {
               <img className='img' src={logo} alt="" />
               <p className='head'>The Future Of Grocery Stores Are Bright</p>
               <p>Developed By</p>
-              <p className='dev'>Team Semicolon</p>
+              <p className='dev'>Team Semicolon</p> 
             </div>
           </div>
         </div>
