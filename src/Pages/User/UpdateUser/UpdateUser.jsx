@@ -73,7 +73,7 @@ export default function UpdateUser(props) {
   const validate = Yup.object({
     user_id: Yup.string().required('required'),
     name: Yup.string().required('required'),
-    mobileNo: Yup.number().required('required').max(11,'Incorrect phone number'), //check
+    mobileNo: Yup.number().required('required'), //check
     email: Yup.string().required('email is required').email('Email is invalid'), //checked
     address: Yup.string().required('required'),
     userLevel: Yup.number().positive('Invalid user level').required('required').typeError('Invalid Input Type'),

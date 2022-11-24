@@ -22,6 +22,9 @@ import ExpiredBatch from "./Pages/Stock/ExpiredBatches/ExpiredfStock"
 import ViewUser from "./Pages/User/ViewUser/ViewUser"
 import UpdateSupplier from "./Pages/Supplier/UpdateSupplier/UpdateSupplier"
 import UpdateUser from "./Pages/User/UpdateUser/UpdateUser"
+import SupplierPaymentReport from "./Pages/Supplier/SupplierPaymentReport/SupplierPaymentReport"
+import UserlogReport from "./Pages/User/UserLog/UserLogReport"
+
 export const routes = [
     {
         path: '/login',
@@ -119,6 +122,15 @@ export const routes = [
     {
         path: '/updateuser/:uid',
         Component: <UpdateUser/>
+    },
+    {
+        path: '/supplierpaymentreport',
+        Component: <SupplierPaymentReport/>
+    }
+    ,
+    {
+        path: '/userlogreport',
+        Component: <UserlogReport/>
     }
 
 ]

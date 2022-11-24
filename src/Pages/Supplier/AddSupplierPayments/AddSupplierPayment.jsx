@@ -36,7 +36,7 @@ export default function AddSupplierPayment() {
     fetchsupplier()
   }, [])
 
-  //---------------------------------------------------------Warehouse-------------------------
+  //---------------------------------------------------------Bank-------------------------
   const [bank, setbank] = useState([]);
   const fetchbank = () => {
     axios
@@ -91,7 +91,7 @@ export default function AddSupplierPayment() {
                 console.log(formik.values);
                 return (
                   <div>
-                    <h1 className="my-4 font-weight-bold-display-4">Add to Stock</h1>
+                    <h1 className="my-4 font-weight-bold-display-4">Add Supplier Payments</h1>
                     <Form>
                     <TextFields label="payment ID" name="paymentId" type="text" />
 {/* ----------------------------------------------------------------------------------------------------------- */}

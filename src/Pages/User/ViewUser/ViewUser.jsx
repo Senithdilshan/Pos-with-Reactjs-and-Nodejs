@@ -54,7 +54,7 @@ export default function ViewUser() {
             </Link>
           </div>
           <div className="col">
-            <Link to={'/addbatch'}>
+            <Link to={'/userlogreport'}>
               <button className="btn btn-secondary">User Log Report</button>
             </Link>
           </div>

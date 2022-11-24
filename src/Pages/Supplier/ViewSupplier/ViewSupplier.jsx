@@ -63,7 +63,7 @@ export default function ViewSupplier() {
             </Link>
           </div>
           <div className="col">
-            <Link to={'/addbatch'}>
+            <Link to={'/supplierpaymentreport'}>
               <button className="btn btn-secondary">Supplier Payment Report</button>
             </Link>
           </div>

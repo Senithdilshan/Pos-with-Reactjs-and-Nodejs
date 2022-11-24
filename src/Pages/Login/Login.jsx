@@ -13,12 +13,30 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
+  const [user , setuser] = useState([])
   const navigate = useNavigate()
 
   const reset = () => {
     setEmail('');
     setPassword('');
   }
+
+  const fetchuser = (email) => {
+    axios
+      .get(`${serverUrl}/user/byemail` , email , {
+        headers: {
+          "authorization": localStorage.getItem("token")
+        },
+      })
+      .then(res => {
+        setuser(res.data)
+        axios.post(`${serverUrl}/user/userlog`, res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   const handlesubmit = () => {
     // e.preventDefault();
     // console.log(e);
@@ -26,12 +44,13 @@ export default function Login() {
       email: email,
       password: password,
     }
+    
     console.log({data});
    
     axios
       .post(`${serverUrl}/user/login`, data)
       .then(res => {
-        axios.post(`${serverUrl}/user/userlog`, data)
+        
         localStorage.setItem("token","Bearer "+res.data.accessToken)
         localStorage.setItem("level",res.data.level)
         setLoginStatus(true)
@@ -41,6 +60,7 @@ export default function Login() {
         setLoginStatus(false);
         window.alert('Login Faild')
       })
+      fetchuser(data.email) ;
   }
 
   return (
