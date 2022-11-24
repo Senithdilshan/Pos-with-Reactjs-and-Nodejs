@@ -51,6 +51,9 @@ function Navbar() {
                         <Link to={'/addbill'}><FaIcons.FaMoneyCheckAlt /><span>Billing</span></Link>
                     </li>
                     <li className="nav-text">
+                        <Link to={'/addbank'}><AiIcons.AiFillBank /><span>bank</span></Link>
+                    </li>
+                    <li className="nav-text">
                         <button className='navButton' onClick={logout}><RiIcons.RiLogoutBoxLine/><span>LOG OUT</span></button>
                     </li>
                 </>
