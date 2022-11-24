@@ -10,7 +10,7 @@ import { addbatch } from './Addbatch.helper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { serverUrl } from '../../../Config';
-
+import moment from "moment"
 
 export default function AddBatch() {
 
@@ -131,8 +131,8 @@ const deleting = (bNo) => {
                     <tr key={getbatch.id}>
                       <td>{getbatch.productId}</td>
                       <td>{getbatch.batchNo}</td>
-                      <td>{getbatch.mfDate}</td>
-                      <td>{getbatch.exDate}</td>
+                      <td>{moment.utc(getbatch.mfDate).format('DD/MM/YYYY')}</td>
+                      <td>{moment.utc(getbatch.exDate).format('DD/MM/YYYY')}</td>
                       <td>{getbatch.buyingPrice}</td>
                       <td>{getbatch.sellingPrice}</td>
                       <td>

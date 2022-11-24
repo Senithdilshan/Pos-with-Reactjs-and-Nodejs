@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { serverUrl } from '../../../Config';
-
+import moment from "moment"
 
 
 
@@ -60,8 +60,8 @@ export default function ViewStock() {
                       <tr key={getbatch.id}>
                        <td>{getbatch.productId}</td>
                       <td>{getbatch.batchNo}</td>
-                      <td>{getbatch.mfDate}</td>
-                      <td>{getbatch.exDate}</td>
+                      <td>{moment.utc(getbatch.mfDate).format('DD/MM/YYYY')}</td>
+                      <td>{moment.utc(getbatch.exDate).format('DD/MM/YYYY')}</td>
                       <td>{getbatch.buyingPrice}</td>
                       <td>{getbatch.sellingPrice}</td>
                       </tr>
