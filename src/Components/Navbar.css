@@ -40,9 +40,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:8px 0px 8px 16px;
+    padding:8px 8px 8px 16px;
     list-style: none;
     height: 60px;
+    margin-bottom:5px;
 }
 
 .nav-text a{

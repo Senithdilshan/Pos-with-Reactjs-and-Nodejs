@@ -39,7 +39,7 @@ function Navbar() {
                         <Link to={'/viewuser'}><AiIcons.AiOutlineUserAdd /><span>User Management</span></Link>
                     </li>
                     <li className="nav-text">
-                        <Link to={'/stock'}><MdIcons.MdInventory /><span>Stock</span></Link>
+                        <Link to={'/stock'}><MdIcons.MdInventory /><span>Stock Management</span></Link>
                     </li>
                     <li className="nav-text">
                         <Link to={'/manage-customers'}><FaUsers /><span>Customer Management</span></Link>
@@ -60,7 +60,7 @@ function Navbar() {
             return (
                 <>
                 <li className="nav-text">
-                        <Link to={'/stock'}><MdIcons.MdInventory /><span>Stock</span></Link>
+                        <Link to={'/stock'}><MdIcons.MdInventory /><span>Stock Management</span></Link>
                     </li>
                     <li className="nav-text">
                         <Link to={'/manage-customers'}><FaUsers /><span>Customer Management</span></Link>

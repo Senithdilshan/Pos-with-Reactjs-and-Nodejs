@@ -37,7 +37,7 @@ export default function AddToStock() {
   const [price, setprices] = useState([]);
   const fetchPrice = (bNo, formik) => {
     axios
-      .get(`${serverUrl}/batches/batchno/ `+ bNo,{
+      .get(`${serverUrl}/batches/batchno/`+ bNo,{
         headers:{
           "authorization":localStorage.getItem("token")
         },
