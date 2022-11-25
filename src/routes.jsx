@@ -26,6 +26,8 @@ import SupplierPaymentReport from "./Pages/Supplier/SupplierPaymentReport/Suppli
 import UserlogReport from "./Pages/User/UserLog/UserLogReport"
 import AddUserReview from "./Pages/User/AddUserReviews/AddUserReview"
 import ViewUserReview from "./Pages/User/ViewUserReview/ViewUserReview"
+import ViewLeaveNote from "./Pages/User/ViewLeaveNote/ViewLeaveNote"
+import AddLeaveNote from "./Pages/User/AddLeaveNote/AddLeaveNote"
 
 export const routes = [
     {
@@ -140,6 +142,14 @@ export const routes = [
     {
         path: '/viewuserreview',
         Component: <ViewUserReview/>
+    },
+    {
+        path: '/viewLeaveNote',
+        Component: <ViewLeaveNote/>
+    },
+    {
+        path: '/addleavenote',
+        Component: <AddLeaveNote/>
     }
 
 ]
