@@ -42,6 +42,7 @@ export default function UpdateSupplier(props) {
   const [initialValues, setInitialValues] = useState({
     supplierId: '',
     supplierName: '',
+    supplierEmail: '',
     suppleirAddress: '',
     supplierContactNumber: ''
   })
@@ -52,6 +53,7 @@ export default function UpdateSupplier(props) {
     setInitialValues({
       supplierId:sid,
       supplierName: '',
+      supplierEmail: '',
       suppleirAddress: '',
       supplierContactNumber: ''
     })
@@ -67,6 +69,7 @@ export default function UpdateSupplier(props) {
   const validate = Yup.object({
     supplierId: Yup.string().required('required'),
     supplierName: Yup.string().required('required'),
+    supplierEmail: Yup.string().required('email is required').email('Email is invalid'),
     suppleirAddress: Yup.string().required('required'),
     supplierContactNumber: Yup.string().required('required'),
   })
@@ -89,6 +92,7 @@ export default function UpdateSupplier(props) {
                     <Form>
                       <TextFields label="Supplier ID" name="supplierId" type="text" readOnly={true} />
                       <TextFields label="Update Supplier Name" name="supplierName" type="text" />
+                      <TextFields label="Update Supplier Email" name="supplierEmail" type="text" />
                       <TextFields label="Update Supplier Address" name="supplierAddress" type="text" />
                       <TextFields label="Update Supplier Contact number" name="supplierContactNumber" type="text" />
                       <button className="add" onClick={() => {
@@ -125,6 +129,7 @@ export default function UpdateSupplier(props) {
                 <tr>
                   <th scope="col">Supplier ID</th>
                   <th scope="col">Supplier Name</th>
+                  <th scope="col">Supplier Email</th>
                   <th scope="col">Supplier Address</th>
                   <th scope="col">Supplier Contact Number</th>
                 </tr>
@@ -135,6 +140,7 @@ export default function UpdateSupplier(props) {
                     <tr key={gets.id}>
                       <td>{gets.supplierId}</td>
                       <td>{gets.supplierName}</td>
+                      <td>{gets.supplierEmail}</td>
                       <td>{gets.supplierAddress}</td>
                       <td>{gets.supplierContactNumber}</td>
                     </tr>

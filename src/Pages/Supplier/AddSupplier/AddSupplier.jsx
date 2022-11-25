@@ -38,6 +38,7 @@ export default function AddSupplier() {
   const validate = Yup.object({
     supplierId: Yup.string().required('required'),
     supplierName: Yup.string().required('required'),
+    supplierEmail: Yup.string().required('email is required').email('Email is invalid'),
     supplierAddress: Yup.string().required('required'),
     supplierContactNumber: Yup.string().required('required'),
   })
@@ -51,6 +52,7 @@ export default function AddSupplier() {
               initialValues={{
                 supplierId: '',
                 supplierName: '',
+                supplierEmail: '',
                 supplierAddress: '',
                 supplierContactNumber: ''
               }}
@@ -62,10 +64,11 @@ export default function AddSupplier() {
                   <div>
                     <h1 className="my-4 font-weight-bold-display-4">Add Supplier</h1>
                     <Form>
-                      <TextFields label="Supplier ID" name="supplierId" type="text" />
-                      <TextFields label="Supplier Name" name="supplierName" type="text" />
-                      <TextFields label="Supplier Address" name="supplierAddress" type="text" />
-                      <TextFields label="Supplier Contact Number" name="supplierContactNumber" type="text" />
+                      <TextFields label="Add Supplier ID" name="supplierId" type="text" />
+                      <TextFields label="Add Supplier Name" name="supplierName" type="text" />
+                      <TextFields label="Add Supplier Email" name="supplierEmail" type="text" />
+                      <TextFields label="Add Supplier Address" name="supplierAddress" type="text" />
+                      <TextFields label="Add Supplier Contact Number" name="supplierContactNumber" type="text" />
                       <button className="add" onClick={() => {
                         addSupplier(formik.values)
                           .then(() => {
@@ -98,18 +101,20 @@ export default function AddSupplier() {
                 <tr>
                   <th scope="col">Supplier ID</th>
                   <th scope="col">Supplier Name</th>
+                  <th scope="col">Supplier Email</th>
                   <th scope="col">Supplier Address</th>
                   <th scope="col">Supplier Contact Number</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  supplier.map(getp => (
-                    <tr key={getp.id}>
-                      <td>{getp.supplierId}</td>
-                      <td>{getp.supplierName}</td>
-                      <td>{getp.supplierAddress}</td>
-                      <td>{getp.supplierContactNumber}</td>
+                  supplier.map(gets => (
+                    <tr key={gets.id}>
+                      <td>{gets.supplierId}</td>
+                      <td>{gets.supplierName}</td>
+                      <td>{gets.supplierEmail}</td>
+                      <td>{gets.supplierAddress}</td>
+                      <td>{gets.supplierContactNumber}</td>
                     </tr>
                   ))
                 }

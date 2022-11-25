@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import TextFields from '../AddUserReviews/TextFields';
 import * as Yup from 'yup';
 import './add.css'
-import { Select, TextInput } from "@mantine/core";
+import { Select, Textarea, TextInput } from "@mantine/core";
 import { serverUrl } from '../../../Config';
 import { addUserReview} from './Adduserreview.helper';
 import { useEffect } from "react";
@@ -111,8 +111,8 @@ export default function AddUserReview() {
                                                 )}
                                             </Field>
                                             <TextFields label="User Name" name="name" type="text" readOnly={true} />
-                                            <TextFields label="User Rationg 1 - 10" name="rating" type="number" />
-                                            <TextFields label="Add User Review" name="description" type="text" />
+                                            <TextFields label="User Rating 1 - 10" name="rating" type="number" />
+                                            <Textarea label="Add User Review" name="description" type="text" />
 
                                             <button className="add"
                                                 onClick={() => {

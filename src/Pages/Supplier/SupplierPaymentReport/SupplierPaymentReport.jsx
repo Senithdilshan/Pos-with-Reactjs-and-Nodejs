@@ -147,6 +147,7 @@ export default function SupplierPaymentReport() {
                   <th scope="col">Payment ID</th>
                   <th scope="col">Supplier ID</th>
                   <th scope="col">Supplier Name</th>
+                  <th scope="col">Supplier Email</th>
                   <th scope="col">Payement Description</th>
                   <th scope="col">Account Number</th>
                   <th scope="col">payment Amount</th>
@@ -159,6 +160,7 @@ export default function SupplierPaymentReport() {
                       <td>{getr.paymentId}</td>
                       <td>{getr.supplierId}</td>
                       <td>{getr.supplierName}</td>
+                      <td>{getr.supplierEmail}</td>
                       <td>{getr.paymentDescription}</td>
                       <td>{getr.accountNumber}</td>
                       <td>{getr.paymentAmount}</td>

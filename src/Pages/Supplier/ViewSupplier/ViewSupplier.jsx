@@ -63,6 +63,16 @@ export default function ViewSupplier() {
             </Link>
           </div>
           <div className="col">
+            <Link to={'/addsupplierpayment'}>
+              <button className="btn btn-secondary">Add Request Note</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/addsupplierpayment'}>
+              <button className="btn btn-secondary">View Request Note</button>
+            </Link>
+          </div>
+          <div className="col">
             <Link to={'/supplierpaymentreport'}>
               <button className="btn btn-secondary">Supplier Payment Report</button>
             </Link>
@@ -79,6 +89,7 @@ export default function ViewSupplier() {
                   <tr>
                     <th scope="col">Supplier ID</th>
                     <th scope="col">Supplier Name</th>
+                    <th scope="col">Supplier Email</th>
                     <th scope="col">Supplier Address</th>
                     <th scope="col">Supplier Contact Number</th>
                     <th scope='col'>Supplier Outstanding Amount</th>
@@ -92,6 +103,7 @@ export default function ViewSupplier() {
                       <tr key={gets.id}>
                         <td>{gets.supplierId}</td>
                         <td>{gets.supplierName}</td>
+                        <td>{gets.supplierEmail}</td>
                         <td>{gets.supplierAddress}</td>
                         <td>{gets.supplierContactNumber}</td>
                         <td>{gets.outstandingAmount}</td>

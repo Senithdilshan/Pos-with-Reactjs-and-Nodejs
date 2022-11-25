@@ -61,6 +61,16 @@ export default function ViewUser() {
           </div>
           <div className="col">
             <Link to={'/viewuserreview'}>
+              <button className="btn btn-secondary">Add Leave Note</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/viewuserreview'}>
+              <button className="btn btn-secondary">View Leave Notes</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/viewuserreview'}>
               <button className="btn btn-secondary">View User Reviews</button>
             </Link>
           </div>

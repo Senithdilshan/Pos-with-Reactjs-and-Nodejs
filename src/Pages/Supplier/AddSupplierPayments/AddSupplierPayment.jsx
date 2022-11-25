@@ -17,16 +17,34 @@ export default function AddSupplierPayment() {
   const navigate = useNavigate() 
 
   const [Supplier, setsupplier] = useState([]);
+
   const fetchsupplier = () => {
     axios
-      .get(`${serverUrl}/supplier`, {
+        .get(`${serverUrl}/supplier`, {
+            headers: {
+                "authorization": localStorage.getItem("token")
+            },
+        })
+        .then(res => {
+            // console.log(res)
+            setsupplier(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+  }
+
+  const fetchsupplierdetails = (sid , formik) => {
+    axios
+      .get(`${serverUrl}/supplier/byid/`+sid, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
       })
       .then(res => {
         // console.log(res)
-        setsupplier(res.data)
+        formik.setFieldValue('supplierName', res.data.supplierName)
+        formik.setFieldValue('supplierEmail', res.data.supplierEmail)
       })
       .catch(err => {
         console.log(err)
@@ -80,6 +98,7 @@ export default function AddSupplierPayment() {
                 paymentId: '',
                 supplierId: '',
                 supplierName: '',
+                supplierEmail:'',
                 paymentDescription: '',
                 paymentAmount: '',
                 accountNumber: '',
@@ -109,6 +128,7 @@ export default function AddSupplierPayment() {
                               onChange={(v) => {
 
                                 formik.setFieldValue('supplierId', v)
+                                fetchsupplierdetails(v, formik)
                               }}
                               label="supplier ID"
                               placeholder="Select a Supplier ID"
@@ -119,28 +139,8 @@ export default function AddSupplierPayment() {
                           )
                         }}
                       </Field>
-{/* ----------------------------------------------------------------------------------------------------------- */}
-                      <Field name="supplier Name">
-                        {({
-                          field,// { name, value, onChange, onBlur }
-                          form: { touched, errors, }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                          meta,
-                        }) => (
-
-                          <Select
-                          error={errors['supplierName']}
-                            onChange={(v) => {
-                              // console.log(v);
-                              formik.setFieldValue('supplierName', v)
-                            }}
-                            label="Supplier Name"
-                            placeholder="Select Supplier Name"
-                            data={Supplier.map(sid => (
-                              { value: sid.supplierName, label: sid.supplierName }
-                            ))}
-                          />
-                        )}
-                      </Field>
+                      <TextFields label="Suppleir Name" name="supplierName" type="text" readOnly={true} />
+                      <TextFields label="Suppleir Email" name="supplierEmail" type="text" readOnly={true} />
                       <TextFields label="Payment Description" name="paymentDescription" type="text" />
                       <TextFields label="Payment Amount" name="paymentAmount" type="number" />
 
