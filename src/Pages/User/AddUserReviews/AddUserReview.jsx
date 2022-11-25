@@ -76,7 +76,6 @@ export default function AddUserReview() {
                                 name: '',
                                 email: '',
                                 rating: '',
-                                paymentDescription: '',
                                 description: '',
 
                             }}
@@ -112,7 +111,24 @@ export default function AddUserReview() {
                                             </Field>
                                             <TextFields label="User Name" name="name" type="text" readOnly={true} />
                                             <TextFields label="User Rating 1 - 10" name="rating" type="number" />
-                                            <Textarea label="Add User Review" name="description" type="text" />
+                                            <TextFields label="Add User Review" name="description" type="text" />
+                                            {/* <Field name="description">
+                                                {({
+                                                    field,// { name, value, onChange, onBlur }
+                                                    form: { touched, errors, }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                                                    meta,
+                                                }) => (
+
+                                                    <Textarea
+                                                        error={errors['description']}
+                                                        label="Add User Review"
+                                                        placeholder="Add a discription about user"
+                                                        onChange={(v) => {
+                                                            formik.setFieldValue('description',v)
+                                                        }}
+                                                    />
+                                                )}
+                                            </Field> */}
 
                                             <button className="add"
                                                 onClick={() => {
