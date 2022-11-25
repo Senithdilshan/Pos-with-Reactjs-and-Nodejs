@@ -9,6 +9,7 @@ import { serverUrl } from '../../../Config';
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import ReactToPrint from 'react-to-print';
+import moment from "moment"
 
 
 export default function UserlogReport(){
@@ -76,7 +77,7 @@ export default function UserlogReport(){
                         }}
                       >Generate User Log Report</button>
                       <button className="reset" type='reset'>Reset</button>
-                      <Link to={'/userlogreport'}>
+                      <Link to={'/viewuser'}>
                         <button className="back">Back</button>
                       </Link>
                     </Form>
@@ -99,6 +100,7 @@ export default function UserlogReport(){
                   <th scope="col">User Name</th>
                   <th scope="col">User Level</th>
                   <th scope="col">User Email</th>
+                  <th scope="col">Login date</th>
                 </tr>
               </thead>
               <tbody>
@@ -109,6 +111,7 @@ export default function UserlogReport(){
                       <td>{getr.name}</td>
                       <td>{getr.userLevel}</td>
                       <td>{getr.email}</td>
+                      <td>{moment.utc(getr.logTime).format('DD/MM/YYYY')}</td>
                     </tr>
                   ))
                 }

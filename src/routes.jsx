@@ -24,6 +24,8 @@ import UpdateSupplier from "./Pages/Supplier/UpdateSupplier/UpdateSupplier"
 import UpdateUser from "./Pages/User/UpdateUser/UpdateUser"
 import SupplierPaymentReport from "./Pages/Supplier/SupplierPaymentReport/SupplierPaymentReport"
 import UserlogReport from "./Pages/User/UserLog/UserLogReport"
+import AddUserReview from "./Pages/User/AddUserReviews/AddUserReview"
+import ViewUserReview from "./Pages/User/ViewUserReview/ViewUserReview"
 
 export const routes = [
     {
@@ -126,11 +128,18 @@ export const routes = [
     {
         path: '/supplierpaymentreport',
         Component: <SupplierPaymentReport/>
-    }
-    ,
+    },
     {
         path: '/userlogreport',
         Component: <UserlogReport/>
+    },
+    {
+        path: '/adduserreview',
+        Component: <AddUserReview/>
+    },
+    {
+        path: '/viewuserreview',
+        Component: <ViewUserReview/>
     }
 
 ]

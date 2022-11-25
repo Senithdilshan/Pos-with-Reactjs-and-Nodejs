@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as AiIcons from "react-icons/ai";
 import { serverUrl } from '../../../Config';
+import moment from "moment"
 
 export default function ViewUser() {
   const ref=useRef()
@@ -54,6 +55,16 @@ export default function ViewUser() {
             </Link>
           </div>
           <div className="col">
+            <Link to={'/adduserreview'}>
+              <button className="btn btn-secondary">Add user Review</button>
+            </Link>
+          </div>
+          <div className="col">
+            <Link to={'/viewuserreview'}>
+              <button className="btn btn-secondary">View User Reviews</button>
+            </Link>
+          </div>
+          <div className="col">
             <Link to={'/userlogreport'}>
               <button className="btn btn-secondary">User Log Report</button>
             </Link>
@@ -89,7 +100,7 @@ export default function ViewUser() {
                         <td>{getu.mobileNo}</td>
                         <td>{getu.userLevel}</td>
                         <td>{getu.address}</td>
-                        <td>{getu.DOB}</td>
+                        <td>{moment.utc(getu.DOB).format('DD/MM/YYYY')}</td>
                         <td>
                           <Link to={'/updateuser/'+getu.user_id}>
                             <button className="btn btn-primary"><AiIcons.AiTwotoneEdit /></button>

@@ -62,7 +62,7 @@ export default function AddSupplierPayment() {
     supplierId: Yup.string().required('required'),
     supplierName: Yup.string().required('required'),
     paymentDescription : Yup.string().required('required'),
-    paymentAmount: Yup.number().positive('Invalid Quantity').required('required').typeError('Invalid Input Type'),
+    paymentAmount: Yup.number().positive('Invalid Amount').required('required').typeError('Invalid Input Type'),
     accountNumber: Yup.string(),
   })
 
