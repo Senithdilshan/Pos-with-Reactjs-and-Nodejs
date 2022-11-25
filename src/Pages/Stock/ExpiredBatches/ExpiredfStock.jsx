@@ -34,14 +34,14 @@ export default function ViewStock() {
       <div className="container mt-3">
         <div className="row">
           <div className="col">
-           <h1 className='text-danger'>Expired Batches In Stock</h1>
+           <h1 style={{ backgroundColor: "blue", color: "white" ,marginTop:50,padding:5}}>Expired Batches In Stock</h1>
           </div>
         </div>
         <div className="row">
           <div className="col md-7" style={{
-            height: 300,
+            height: 450,
             overflowY: 'scroll',
-            marginTop: 105
+            marginTop: 20
           }}>
               <table className="table table-striped table-dark">
                 <thead className="thead-light">
