@@ -9,7 +9,9 @@ import * as HiIcons from "react-icons/hi";
 import { Center } from '@mantine/core';
 import { serverUrl } from '../../../Config';
  import "../../Login/Login.css"
-
+ import * as GrIcons from "react-icons/gr";
+ import * as TbIcons from "react-icons/tb";
+ import * as FaItems from "react-icons/fa";
 
 export default function ViewStock() {
   const navigate = useNavigate()
@@ -79,49 +81,64 @@ export default function ViewStock() {
         <div className="row">
           <div className="col">
             <Link to={'/addstock'}>
-              <button className="btn btn-secondary">Add New Product to Shop</button>
+              <button className="btn btn-warning">Add New Product&nbsp;<AiIcons.AiOutlineDropbox /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/addwarehouse'}>
-              <button className="btn btn-secondary">Add New Warehouse to Shop</button>
+              <button className="btn btn-warning">Add New Warehouse&nbsp;&nbsp;<FaItems.FaWarehouse/></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/addbatch'}>
-              <button className="btn btn-secondary">Add New Batch Detalis</button>
+              <button className="btn btn-primary">Add New Batch Detalis&nbsp;&nbsp;<GrIcons.GrNotes /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/addtostock'}>
-              <button className="btn btn-secondary">Add Products to Stock</button>
+              <button className="btn btn-primary">Add Products To Stock&nbsp;&nbsp;<AiIcons.AiOutlineStock/></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/viewgrns'}>
-              <button className="btn btn-success">View GRNs and Print</button>
+              <button className="btn btn-success">View GRNs And Print&nbsp;&nbsp;<AiIcons.AiFillPrinter/></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/outofstock'}>
-              <button className="btn btn-danger">Out of stock Product List</button>
+              <button className="btn btn-danger">Out Of Stock Batches &nbsp;&nbsp;<AiIcons.AiFillWarning/></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/batchexpired'}>
-              <button className="btn btn-danger">Expired Batches in Stocks</button>
+              <button className="btn btn-danger">Expired Batches In Stocks&nbsp;&nbsp;<AiIcons.AiFillWarning/></button>
             </Link>
           </div>
 {/* ------------------------------Search----------------------------------------------------------------- */}
           <div className="row">
             <h2 style={{ marginTop: 30,marginBottom:10, backgroundColor: "blue", color: "white",width:270,padding:5}}>Search In Stock<HiIcons.HiSearchCircle/></h2>
-            <input
-              type="text"
-              className="form-control mt-1"
-              placeholder="Search......"
-              value={query}
-              onChange={(e)=>filter(e)}
-            />
+            
+          </div>
+          <div className="row">
+          <input
+            style={{ width: 500,background:'#D2EDFC' }}
+            type="text"
+            className="form-control mt-1"
+            placeholder="Search......"
+            value={query}
+            onChange={(e) => filter(e)}
+          />
+          <div className="col">
+            <button
+            style={{
+              borderStyle:'none',
+              marginTop:6,
+              padding:6,
+              color:"white",
+              background:'black'
+
+            }}>Search &nbsp;&nbsp;<HiIcons.HiSearchCircle/></button>
+          </div>
           </div>
 {/* //--------------------------------------------------------------------------------------------- */}
           <div className="row">

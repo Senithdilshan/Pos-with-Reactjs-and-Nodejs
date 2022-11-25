@@ -49,19 +49,18 @@ export default function ViewUser() {
   useEffect(() => {
     fetch()
   }, [])
-//-----------------------------------search-------------------------------
-const filter=(event)=>{
-  const getsearch=event.target.value;
-  setquery(getsearch);
-  // console.log(getsearch);
-  if(getsearch.length>0){
-    const searchdata=user.filter((item)=>item.user_id.toLowerCase().includes(getsearch));
-    setUser(searchdata);
-  }else
-  {
-    setUser(filterdata);
+  //-----------------------------------search-------------------------------
+  const filter = (event) => {
+    const getsearch = event.target.value;
+    setquery(getsearch);
+    // console.log(getsearch);
+    if (getsearch.length > 0) {
+      const searchdata = user.filter((item) => item.user_id.toLowerCase().includes(getsearch));
+      setUser(searchdata);
+    } else {
+      setUser(filterdata);
+    }
   }
-}
 
 
 
@@ -70,12 +69,12 @@ const filter=(event)=>{
     <>
       <Navbar />
       <div className="container mt-3">
-        <div className="Auth-form-title1"style={{
-          textAlign:Center,
-          marginBottom:"10px",
+        <div className="Auth-form-title1" style={{
+          textAlign: Center,
+          marginBottom: "10px",
           fontSize: "24px",
-          color:'white',
-          padding:"5px",
+          color: 'white',
+          padding: "5px",
           backgroundColor: 'green',
           fontWeight: 800,
           borderRadius: "10px"
@@ -85,39 +84,42 @@ const filter=(event)=>{
         <div className="row">
           <div className="col">
             <Link to={'/adduser'}>
-              <button className="btn btn-primary">Add New User&nbsp;<AiIcons.AiOutlineUserAdd/></button>
+              <button className="btn btn-primary">Add New User&nbsp;<AiIcons.AiOutlineUserAdd /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/adduserreview'}>
-              <button className="btn btn-primary">Add user Review&nbsp;<AiIcons.AiOutlineFundView/></button>
+              <button className="btn btn-primary">Add user Review&nbsp;<AiIcons.AiOutlineFundView /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/viewuserreview'}>
-              <button className="btn btn-warning">Add Leave Note&nbsp;<AiIcons.AiFillFolderAdd/></button>
+              <button className="btn btn-warning">Add Leave Note&nbsp;<AiIcons.AiFillFolderAdd /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/viewuserreview'}>
-              <button className="btn btn-warning">View Leave Notes&nbsp;<AiIcons.AiFillEye/></button>
+              <button className="btn btn-warning">View Leave Notes&nbsp;<AiIcons.AiFillEye /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/viewuserreview'}>
-              <button className="btn btn-warning">View User Reviews&nbsp;<FcItems.FcRating/></button>
+              <button className="btn btn-warning">View User Reviews&nbsp;<FcItems.FcRating /></button>
             </Link>
           </div>
           <div className="col">
             <Link to={'/userlogreport'}>
-              <button className="btn btn-danger">User Log Report&nbsp;<AiIcons.AiOutlineFileProtect/></button>
+              <button className="btn btn-danger">User Log Report&nbsp;<AiIcons.AiOutlineFileProtect /></button>
             </Link>
           </div>
         </div>
         {/* ------------------------------Search----------------------------------------------------------------- */}
         <div className="row">
           <h2 style={{ marginTop: 30, marginBottom: 10, backgroundColor: "green", color: "white", width: 220, padding: 5 }}>Search User<HiIcons.HiSearchCircle /></h2>
+        </div>
+        <div className="row">
           <input
+            style={{ width: 500 }}
             type="text"
             className="form-control mt-1"
             placeholder="Search......"
