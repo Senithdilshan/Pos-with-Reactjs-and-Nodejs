@@ -141,7 +141,7 @@ export default function SupplierPaymentReport() {
             //overflowY: 'scroll',
             marginTop: 105
           }}>
-            <h1 style={{ backgroundColor: "blue", color: "white" ,marginTop:50,padding:5}}>User Log Report</h1>
+            <h1 style={{ backgroundColor: "blue", color: "white" ,marginTop:50,padding:5}}>Supplier Payment Report</h1>
             <table className="table table-borderless">
               <thead>
                 <tr>
