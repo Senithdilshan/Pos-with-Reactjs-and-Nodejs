@@ -5,7 +5,26 @@ import axios from 'axios';
 import { serverUrl } from '../../../../Config';
 
 export default function AddCustomer() {
-
+    //----------------------------------------------------Price-------------------------------------
+    const [displayprice, setdisplaprice] = useState([]);
+    const [availablequantity, setavailablequantity] = useState([]);
+    const fetchprice = (pid) => {
+        axios
+            .get(`${serverUrl}/stock/setproduct/${pid}`, {
+                headers: {
+                    "authorization": localStorage.getItem("token")
+                },
+            })
+            .then(res => {
+                setdisplaprice(res.data);
+                // console.log(res.data.sellingPrice);
+                setdisplaprice(res.data.sellingPrice);
+                setavailablequantity(res.data.quantity);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     //-----------------------------------------------fetch batch No----------------------------------
     const [displayName, setdisplayname] = useState([]);
@@ -18,8 +37,9 @@ export default function AddCustomer() {
             })
             .then(res => {
                 setdisplayname(res.data);
-                console.log(res.data);
+                // console.log(res.data);
                 setName(res.data.productName);
+                fetchprice(res.data.productId);
             })
             .catch(err => {
                 console.log(err)
@@ -65,9 +85,9 @@ export default function AddCustomer() {
         alert("Invoice Printed Successfully");
     }*/
     const addProduct = (e) => {
-        const Sum = price * quantity - discount;
+        const Sum = displayprice * quantity - discount;
         setTotalSum(totalSum + Sum);
-        setItems([...items, { code: code, name: name, price: price, quantity: quantity, discount: discount, total: Sum }]);
+        setItems([...items, { code: code, name: name, price: displayprice, quantity: quantity, discount: discount, total: Sum }]);
         alert("Product Added Successfully Rs." + Sum + "/- ");
         clearAllProduct();
     }
@@ -127,7 +147,6 @@ export default function AddCustomer() {
                     <div className="form-group">
                         <label htmlFor="code">Code</label>
                         <input type="text" className="form-control" id="code" placeholder="Enter Code"
-                            value={code}
                             onChange={(e) => {
                                 setCode(e.target.value);
                                 fetchname(e.target.value);
@@ -138,20 +157,25 @@ export default function AddCustomer() {
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input type="text" className="form-control" id="name" placeholder="Enter Name"
-                           value={name}
-                           readOnly
-                        //    onChange={(e) => {
-                        //         // setName(e.target.value);
-                        //     }
-                        //     }
-                             />
+                            value={name}
+                            readOnly
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="price">Price</label>
                         <input type="number" className="form-control" id="price" placeholder="Enter Price"
-                            onChange={(e) => setPrice(e.target.value)
+                            value={displayprice}
+                            readOnly
+                            
 
-                            } />
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="quantity">Availabe Quantity</label>
+                        <input type="number" className="form-control" id="availablequantity" placeholder="Available Quantity"
+                            readOnly
+                            value={availablequantity}
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="quantity">Quantity</label>
