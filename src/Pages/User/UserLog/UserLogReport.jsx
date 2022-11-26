@@ -90,10 +90,11 @@ export default function UserlogReport(){
         <div className="row">
         <div ref = {ref} className="col md-7" style={{
             height: '100%',
-            overflowY: 'scroll',
+            //overflowY: 'scroll',
             marginTop: 105
           }}>
-            <table className="table table-sm">
+            <h1 style={{ backgroundColor: "green", color: "white" ,marginTop:50,padding:5}}>User Log Report</h1>
+            <table className="table table-borderless">
               <thead>
                 <tr>
                   <th scope="col">User ID</th>
@@ -111,7 +112,7 @@ export default function UserlogReport(){
                       <td>{getr.name}</td>
                       <td>{getr.userLevel}</td>
                       <td>{getr.email}</td>
-                      <td>{moment.utc(getr.logTime).format('DD MM YYYY      hh:mm:ss')}</td>
+                      <td>{moment.utc(getr.logTime).format('DD MM YYYY hh:mm:ss')}</td>
                     </tr>
                   ))
                 }

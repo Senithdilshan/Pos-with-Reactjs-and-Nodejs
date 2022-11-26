@@ -138,10 +138,11 @@ export default function SupplierPaymentReport() {
         <div className="row">
         <div ref = {ref} className="col md-7" style={{
             height: '100%',
-            overflowY: 'scroll',
+            //overflowY: 'scroll',
             marginTop: 105
           }}>
-            <table className="table table-sm">
+            <h1 style={{ backgroundColor: "blue", color: "white" ,marginTop:50,padding:5}}>User Log Report</h1>
+            <table className="table table-borderless">
               <thead>
                 <tr>
                   <th scope="col">Payment ID</th>

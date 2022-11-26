@@ -56,7 +56,7 @@ const filter=(event)=>{
     <>
       <Navbar />
       <div className="container mt-3" >
-      <h1 className="my-4 font-weight-bold-display-4">View Request Notes</h1>
+      <h1 className="my-4 font-weight-bold-display-4" style={{ backgroundColor: "17BFBA", color: "white" ,marginTop:50,padding:5}}>View Request Notes</h1>
         <div>
           {/* ------------------------------Search----------------------------------------------------------------- */}
         <div className="row">
