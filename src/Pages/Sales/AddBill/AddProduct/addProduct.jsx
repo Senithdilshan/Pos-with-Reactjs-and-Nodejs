@@ -89,7 +89,7 @@ export default function AddCustomer() {
     const save = () => {
         console.log("saving");
         console.log("code ", code + " name ", name + " price ", price + " quantity ", quantity + " total ", total + " discount ", discount + " discountInvoice ", discountInvoice + " balance ", balance + " paid ", paid);
-        alert("Invoice Added Successfully");
+
         saveToDB();
         //Database Data to DB
 
@@ -104,19 +104,19 @@ export default function AddCustomer() {
         alert("Product Added Successfully Rs." + Sum + "/- ");
         // setNetTotal(totalSum - discountInvoice)
         // console.log(netTotal);
-        const data = {
-                    productId: code,
-                    quantity: quantity,
-                    price: displayprice,
-                    netAmount:netTotal,
-                    discount:discount,
-                    totalAmount:Sum,
-                }
-                console.log(data);
-        
+        // const data = {
+        //     productId: code,
+        //     quantity: quantity,
+        //     price: displayprice,
+        //     netAmount: netTotal,
+        //     discount: discount,
+        //     totalAmount: Sum,
+        // }
+        // console.log(data);
+
 
         clearAllProduct();
-        
+
     }
 
     const productDelete = (index, e) => {
@@ -155,7 +155,46 @@ export default function AddCustomer() {
         document.getElementById("code").focus();
     }
     function saveToDB() {
-        window.location.reload(true);
+        // window.location.reload(true);
+        var today = new Date();
+        var date = today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate();
+        var time = today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+        var dateTime = date + '' + time;
+        var setdate=dateTime.slice(3,13)
+        console.log(setdate);
+
+        //get the value in the table
+
+        items.map((item, index) => {
+
+            const data = {
+                customerId:setdate,
+                productId: item.code,
+                quantity: item.quantity,
+                price: item.price,
+                netAmount: netTotal,
+                discount: discount,
+                totalAmount: item.total,
+            }
+            console.log(data);
+            axios.post(`${serverUrl}/sale`, data, {
+                headers: {
+                    "authorization": localStorage.getItem("token")
+                },
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+
+
+
+        }
+
+        )
+    }
+    
+    function decrementQuantity( ){
+        
     }
     function searchBill() {
         navigate('/search-bill');
@@ -193,17 +232,17 @@ export default function AddCustomer() {
                         <input type="number" className="form-control" id="price" placeholder="Enter Price"
                             value={displayprice}
                             readOnly
-                            
+
 
                         />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label htmlFor="quantity">Availabe Quantity</label>
                         <input type="number" className="form-control" id="availablequantity" placeholder="Available Quantity"
                             readOnly
                             value={availablequantity}
                         />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label htmlFor="quantity">Quantity</label>
                         <input type="number" className="form-control" id="quantity" placeholder="Enter Quantity"
@@ -216,7 +255,7 @@ export default function AddCustomer() {
                             onChange={(e) => setDiscount(e.target.value)
                             } />
                     </div>
-                    <button type="submit" className="btn btn-outline-success mt-2" onClick={(e)=>{
+                    <button type="submit" className="btn btn-outline-success mt-2" onClick={(e) => {
                         addProduct(e);
                         // afteradd();
                     }}>Add Product</button>
@@ -256,7 +295,7 @@ export default function AddCustomer() {
 
                     <button type="submit" className="btn btn-info mt-2 m-1 " onClick={save}>Save</button>
                     <button type="submit" className="btn btn-dark mt-2 m-1" onClick={handleDownload}>Print</button>
-                    <button type="submit" className="btn btn-dark mt-2 m-1" onClick={saveUser}>Loyalty Points</button>
+                    {/* <button type="submit" className="btn btn-dark mt-2 m-1" onClick={saveUser}>Loyalty Points</button> */}
                     <button type="submit" className="btn btn-dark mt-2 m-1" onClick={searchBill}>Search Bill</button>
 
                 </div>
