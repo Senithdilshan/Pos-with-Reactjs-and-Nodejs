@@ -9,23 +9,23 @@ import { Link } from 'react-router-dom';
 import moment from "moment"
 import * as HiIcons from "react-icons/hi";
 
-export default function ViewLeaveNote() {
+export default function ViewRequestNote() {
 
   const ref=useRef()
       
-  const [leavenote, setleavenote] = useState([]);
+  const [requestnote, setrequestnote] = useState([]);
   const [query, setquery] = useState('');
   const [filterdata, setfilterdata] = useState('');
 
-  const fetchleavenote = () => {
+  const fetchrequestnote = () => {
     axios
-      .get(`${serverUrl}/leavenote`, {
+      .get(`${serverUrl}/supplierrequestnote`, {
         headers: {
           "authorization": localStorage.getItem("token")
         },
       })
       .then(res => {
-        setleavenote(res.data)
+        setrequestnote(res.data)
         setfilterdata(res.data)
       })
       .catch(err => {
@@ -34,7 +34,7 @@ export default function ViewLeaveNote() {
   }
 
   useEffect(() => {
-    fetchleavenote()
+    fetchrequestnote()
   }, [])
 
 //-----------------------------------search-------------------------------
@@ -43,11 +43,11 @@ const filter=(event)=>{
   setquery(getsearch);
   // console.log(getsearch);
   if(getsearch.length>0){
-    const searchdata=leavenote.filter((item)=>item.user_id.toLowerCase().includes(getsearch));
-    setleavenote(searchdata);
+    const searchdata=requestnote.filter((item)=>item.requestId.toLowerCase().includes(getsearch));
+    setrequestnote(searchdata);
   }else
   {
-    setleavenote(filterdata);
+    setrequestnote(filterdata);
   }
 }
 
@@ -56,7 +56,7 @@ const filter=(event)=>{
     <>
       <Navbar />
       <div className="container mt-3" >
-      <h1 className="my-4 font-weight-bold-display-4">View Leave Note</h1>
+      <h1 className="my-4 font-weight-bold-display-4">View Request Notes</h1>
         <div>
           {/* ------------------------------Search----------------------------------------------------------------- */}
         <div className="row">
@@ -80,22 +80,28 @@ const filter=(event)=>{
             <table className="table table-sm">
               <thead>
                 <tr>
-                  <th scope="col">User ID</th>
-                  <th scope="col">User Name</th>
-                  <th scope="col">Leave Date</th>
-                  <th scope="col">Reason</th>
-                  <th scope="col">Submitted Date</th>
+                  <th scope="col">Request ID</th>
+                  <th scope="col">Supplier ID</th>
+                  <th scope="col">Supplier Name</th>
+                  <th scope="col">Product ID</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Requested Quantity</th>
+                  <th scope="col">Requested Date</th>
+                  <th scope="col">Request Sent Date</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  leavenote.map(getl => (
-                    <tr key={getl.id}>
-                      <td>{getl.user_id}</td>
-                      <td>{getl.name}</td>
-                      <td>{getl.date}</td>
-                      <td>{getl.reason}</td>
-                      <td>{moment.utc(getl.createdAt).format('DD/MM/YYYY')}</td>
+                  requestnote.map(getr => (
+                    <tr key={getr.id}>
+                      <td>{getr.requestId}</td>
+                      <td>{getr.supplierId}</td>
+                      <td>{getr.supplierName}</td>
+                      <td>{getr.productId}</td>
+                      <td>{getr.productName}</td>
+                      <td>{getr.quantity}</td>
+                      <td>{getr.date}</td>
+                      <td>{moment.utc(getr.createdAt).format('DD/MM/YYYY')}</td>
                     </tr>
                   ))
                 }
@@ -108,10 +114,10 @@ const filter=(event)=>{
          <ReactToPrint
           trigger={()=><button className='btn btn-primary mx-auto'>Print</button>}
           content={()=>ref.current}
-          documentTitle='Print Leave Notes'
+          documentTitle='Print Request Notes'
           pageStyle="print"
           />
-          <Link to={'/viewuser'}>
+          <Link to={'/viewsupplier'}>
                         <button className="back">Back</button>
                       </Link>
          </div>

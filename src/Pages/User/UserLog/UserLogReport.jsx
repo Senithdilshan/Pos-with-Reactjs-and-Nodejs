@@ -111,7 +111,7 @@ export default function UserlogReport(){
                       <td>{getr.name}</td>
                       <td>{getr.userLevel}</td>
                       <td>{getr.email}</td>
-                      <td>{moment.utc(getr.logTime).format('DD/MM/YYYY')}</td>
+                      <td>{moment.utc(getr.logTime).format('DD MM YYYY      hh:mm:ss')}</td>
                     </tr>
                   ))
                 }

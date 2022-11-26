@@ -97,12 +97,12 @@ export default function ViewSupplier() {
             </Link>
           </div>
           <div className="col">
-            <Link to={'/addsupplierpayment'}>
+            <Link to={'/addrequestnote'}>
               <button className="btn btn-primary">Add Request Note&nbsp;&nbsp;<GrIcons.GrNotes /></button>
             </Link>
           </div>
           <div className="col">
-            <Link to={'/addsupplierpayment'}>
+            <Link to={'/viewrequestnote'}>
               <button className="btn btn-warning">View Request Note&nbsp;&nbsp;<GrIcons.GrNotes /></button>
             </Link>
           </div>

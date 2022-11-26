@@ -28,6 +28,8 @@ import AddUserReview from "./Pages/User/AddUserReviews/AddUserReview"
 import ViewUserReview from "./Pages/User/ViewUserReview/ViewUserReview"
 import ViewLeaveNote from "./Pages/User/ViewLeaveNote/ViewLeaveNote"
 import AddLeaveNote from "./Pages/User/AddLeaveNote/AddLeaveNote"
+import AddRequestNote from "./Pages/Supplier/AddRequestNote/AddRequestNote"
+import ViewRequestNote from "./Pages/Supplier/ViewRequestNote/ViewRequestNote"
 
 export const routes = [
     {
@@ -150,6 +152,14 @@ export const routes = [
     {
         path: '/addleavenote',
         Component: <AddLeaveNote/>
+    },
+    {
+        path: '/addrequestnote',
+        Component: <AddRequestNote/>
+    },
+    {
+        path: '/viewrequestnote',
+        Component: <ViewRequestNote/>
     }
 
 ]

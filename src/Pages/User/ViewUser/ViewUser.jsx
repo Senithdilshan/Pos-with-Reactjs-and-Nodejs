@@ -93,12 +93,12 @@ export default function ViewUser() {
             </Link>
           </div>
           <div className="col">
-            <Link to={'/viewuserreview'}>
+            <Link to={'/addleavenote'}>
               <button className="btn btn-warning">Add Leave Note&nbsp;<AiIcons.AiFillFolderAdd /></button>
             </Link>
           </div>
           <div className="col">
-            <Link to={'/viewuserreview'}>
+            <Link to={'/viewleavenote'}>
               <button className="btn btn-warning">View Leave Notes&nbsp;<AiIcons.AiFillEye /></button>
             </Link>
           </div>
