@@ -8,6 +8,19 @@ export default function AddCustomer() {
     //----------------------------------------------------Price-------------------------------------
     const [displayprice, setdisplaprice] = useState([]);
     const [availablequantity, setavailablequantity] = useState([]);
+
+
+    // const afteradd=()=>{
+    //     const data = {
+    //         productId: code,
+    //         quantity: quantity,
+    //         price: displayprice,
+    //         netAmount:netTotal,
+    //         discount:discount,
+    //         totalAmount:totalSum,
+    //     }
+    //     console.log(data);
+    // }
     const fetchprice = (pid) => {
         axios
             .get(`${serverUrl}/stock/setproduct/${pid}`, {
@@ -89,7 +102,21 @@ export default function AddCustomer() {
         setTotalSum(totalSum + Sum);
         setItems([...items, { code: code, name: name, price: displayprice, quantity: quantity, discount: discount, total: Sum }]);
         alert("Product Added Successfully Rs." + Sum + "/- ");
+        // setNetTotal(totalSum - discountInvoice)
+        // console.log(netTotal);
+        const data = {
+                    productId: code,
+                    quantity: quantity,
+                    price: displayprice,
+                    netAmount:netTotal,
+                    discount:discount,
+                    totalAmount:Sum,
+                }
+                console.log(data);
+        
+
         clearAllProduct();
+        
     }
 
     const productDelete = (index, e) => {
@@ -189,7 +216,10 @@ export default function AddCustomer() {
                             onChange={(e) => setDiscount(e.target.value)
                             } />
                     </div>
-                    <button type="submit" className="btn btn-outline-success mt-2" onClick={addProduct}>Add Product</button>
+                    <button type="submit" className="btn btn-outline-success mt-2" onClick={(e)=>{
+                        addProduct(e);
+                        // afteradd();
+                    }}>Add Product</button>
                 </div>
                 <div className="col-sm" >
                     <h1>Billing Information</h1>
@@ -208,7 +238,7 @@ export default function AddCustomer() {
                     <div className="form-group row">
                         <label htmlFor="net" className="col-sm-2 col-form-label">Net</label>
                         <div className="col-sm-10">
-                            <p className="form-control-plaintext" id="Net">{totalSum - discountInvoice}</p>
+                            <p className="form-control-plaintext" id="Net">{(totalSum - discountInvoice)}</p>
                         </div>
                     </div>
                     <div className="form-group row">
