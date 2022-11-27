@@ -91,6 +91,7 @@ export default function AddCustomer() {
         console.log("code ", code + " name ", name + " price ", price + " quantity ", quantity + " total ", total + " discount ", discount + " discountInvoice ", discountInvoice + " balance ", balance + " paid ", paid);
 
         saveToDB();
+        window.location.reload();
         //Database Data to DB
 
     }
@@ -145,6 +146,7 @@ export default function AddCustomer() {
             width: 900, // <- here
             windowWidth: 5500
         });
+        window.location.reload();
     };
     function clearAllProduct() {
         document.getElementById("code").value = "";

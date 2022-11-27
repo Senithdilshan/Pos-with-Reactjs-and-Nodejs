@@ -1,44 +1,72 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { serverUrl } from '../../../../Config';
 
-export default function searchBill() {
-
-  function SearchUsingInput() {
-   
-    var input = document.getElementById("search").value;
-    axios.get(`${serverUrl}/sale/`)
-      .then(res => {
-        var data = res.data;
-        for (var i=0 ; i<data.length ; i++){
-          if (data[i].saleId == input){
-            document.getElementById("table").innerHTML = "<tr><th>Bill No</th><th>Quantity</th><th>Price</th><th>Total</th><th>Paid</th></tr><tr><td>" + data[i].saleId + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].netAmount + "</td><td>" + data[i].totalAmount + "</td></tr>";
-            document.getElementById("date").innerHTML = data[i].saleDate;
-            break;
-          }else
-          {
-            document.getElementById("table").innerHTML = "No Bill Found";
-            document.getElementById("date").innerHTML = "";
-          }
-        }
+export default function SearchBill() {
+    const [bill, setBill] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const result = await axios(serverUrl+ '/sale/');
+        setBill(result.data);
       }
-      )
+      fetchData();
+    }, []);
+
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
   }
     
   
   return (
     <div className="container">
       <div className="input-group mb-3 mt-2">
-          <input type="text" className="form-control" id="search" placeholder="Enter Bill Number" aria-label="Enter Bill Number" aria-describedby="basic-addon2" onChange={SearchUsingInput}/>
+          <input type="text" className="form-control" id="myInput" onKeyUp={myFunction} placeholder="Enter Bill Number" aria-label="Enter Bill Number" aria-describedby="basic-addon2" />
         </div>
-        <div>
-        </div>
-        <table className="table" id="table">
-          <div id="table"></div>
+    <table id="myTable" class='table' >
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Discount</th>
+          <th>Price</th>
+          </tr>
+      </thead>
+      <tbody>
+        {bill.map((bill) => (
+          <tr key={bill.saleId}>
+            <td>{bill.customerId}</td>
+            <td>{bill.productId}</td>
+            <td>{bill.quantity}</td>
+            <td>{bill.discount}</td>
+            <td>{bill.price}</td>
+            </tr>
+        ))}
+      </tbody>
 
-        </table>
-        {/* Print the date */}
-        <div id='date'></div>              
+
+      </table>
+      {/* back button */}
+      <div className="row">
+        <div className="col-12">
+          <button className="btn btn-primary float-right" onClick={() => window.history.back()}>Back</button>
+          </div>
+          </div>
     </div>
   )
 }

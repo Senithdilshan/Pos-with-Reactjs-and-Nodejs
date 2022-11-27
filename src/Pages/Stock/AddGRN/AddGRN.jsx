@@ -130,7 +130,7 @@ export default function AddStock() {
             </Formik>
           </div>
           <div className="col md-7" style={{
-            height: 300,
+            height: 600,
             overflowY: 'scroll',
             marginTop: 105
           }}>

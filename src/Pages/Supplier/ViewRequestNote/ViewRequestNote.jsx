@@ -60,7 +60,7 @@ const filter=(event)=>{
         <div>
           {/* ------------------------------Search----------------------------------------------------------------- */}
         <div className="row">
-          <h2 style={{ marginTop: 30, marginBottom: 10, backgroundColor: "green", color: "white", width: 220, padding: 5 }}>Search User<HiIcons.HiSearchCircle /></h2>
+          <h2 style={{ marginTop: 30, marginBottom: 10, backgroundColor: "green", color: "white", width: 220, padding: 5 }}>Search Request<HiIcons.HiSearchCircle /></h2>
           <input
             type="text"
             className="form-control mt-1"

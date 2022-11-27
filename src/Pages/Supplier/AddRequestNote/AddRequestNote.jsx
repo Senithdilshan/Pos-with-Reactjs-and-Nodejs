@@ -125,7 +125,7 @@ export default function AddRequestNote() {
                 console.log(formik.values);
                 return (
                   <div>
-                    <h1 className="my-4 font-weight-bold-display-4">Add Supplier Payments</h1>
+                    <h1 className="my-4 font-weight-bold-display-4">Add Request Note</h1>
                     <Form>
                     <TextFields label="Add Request ID" name="requestId" type="text" />
 {/* ----------------------------------------------------------------------------------------------------------- */}
